@@ -1,0 +1,5 @@
+ID,quotation_id_ID,item_id_ID,unit_price,quantity,line_total,currency_code,notes
+hhhhhhhh-hhhh-hhhh-hhhh-hhhhhhhhhhhh,ffffffff-ffff-ffff-ffff-ffffffffffff,99999999-9999-9999-9999-999999999999,2.0000,1000.0000,2000.0000,USD,Premium quality paper
+iiiiiiii-iiii-iiii-iiii-iiiiiiiiiiii,ffffffff-ffff-ffff-ffff-ffffffffffff,aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa,1.0000,500.0000,500.0000,USD,Standard ballpoint pens
+jjjjjjjj-jjjj-jjjj-jjjj-jjjjjjjjjjjj,gggggggg-gggg-gggg-gggg-gggggggggggg,99999999-9999-9999-9999-999999999999,1.8000,1000.0000,1800.0000,USD,Good quality paper
+kkkkkkkk-kkkk-kkkk-kkkk-kkkkkkkkkkkk,gggggggg-gggg-gggg-gggg-gggggggggggg,aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa,0.8000,500.0000,400.0000,USD,Economy pens

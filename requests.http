@@ -1,0 +1,13 @@
+### Variables
+@baseUrl = http://localhost:8080
+@adminService = {{baseUrl}}/odata/v4/admin
+
+### Get Full RFQ Details with All Related Information
+GET {{adminService}}/RFQs(77777777-7777-7777-7777-777777777777)?$expand=created_by,items($expand=unit_of_measure),RFQItems($expand=frq_id,unit_of_measure)&$select=*
+Authorization: Basic admin:admin
+Content-Type: application/json
+
+### Get All Vendors
+GET {{adminService}}/Vendors
+Authorization: Basic admin:admin
+Content-Type: application/json

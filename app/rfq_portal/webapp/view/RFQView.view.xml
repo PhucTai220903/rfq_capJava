@@ -1,0 +1,75 @@
+<mvc:View
+    controllerName="rfqportal.controller.RFQView"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+    <Page id="rfqPage" title="Request for Quotations" showNavButton="true" navButtonPress="onNavBack">
+        <content>
+            <VBox id="rfqTableMainVBox" class="sapUiMediumMargin">
+                <Table id="rfqTable" items="{/RFQs}" growing="true" growingThreshold="20">
+                    <headerToolbar>
+                        <Toolbar>
+                            <Title text="RFQ List"/>
+                            <ToolbarSpacer/>
+                            <Button 
+                                text="Create RFQ" 
+                                icon="sap-icon://add"
+                                type="Emphasized"
+                                press="onCreateRFQ"/>
+                            <Button 
+                                text="Refresh" 
+                                icon="sap-icon://refresh"
+                                press="onRefresh"/>
+                        </Toolbar>
+                    </headerToolbar>
+                    <columns>
+                        <Column width="15%">
+                            <Text text="RFQ ID"/>
+                        </Column>
+                        <Column width="20%">
+                            <Text text="Title"/>
+                        </Column>
+                        <Column width="25%">
+                            <Text text="Description"/>
+                        </Column>
+                        <Column width="15%">
+                            <Text text="Due Date"/>
+                        </Column>
+                        <Column width="10%">
+                            <Text text="Status"/>
+                        </Column>
+                        <Column width="15%">
+                            <Text text="Actions"/>
+                        </Column>
+                    </columns>
+                    <items>
+                        <ColumnListItem press="onRowPress">
+                            <cells>
+                                <Text text="{ID}"/>
+                                <Text text="{title}" maxLines="2"/>
+                                <Text text="{description}" maxLines="2"/>
+                                <Text text="{path: 'due_date', formatter: '.formatDate'}"/>
+                                <ObjectStatus 
+                                    text="{path: 'status', formatter: '.formatStatus'}"
+                                    state="{path: 'status', formatter: '.formatStatusState'}"/>
+                                <HBox>
+                                    <Button 
+                                        text="View" 
+                                        type="Emphasized"
+                                        press="onViewDetail"
+                                        icon="sap-icon://detail-view"
+                                        class="sapUiTinyMarginEnd"/>
+                                    <Button 
+                                        text="Edit" 
+                                        press="onEditRFQ"
+                                        icon="sap-icon://edit"/>
+                                </HBox>
+                            </cells>
+                        </ColumnListItem>
+                    </items>
+                </Table>
+            </VBox>
+        </content>
+    </Page>
+</mvc:View>

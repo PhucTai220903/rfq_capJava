@@ -1,0 +1,157 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form">
+    
+    <Dialog id="rfqDetailDialog" title="RFQ Details" contentWidth="900px" contentHeight="700px" draggable="true" resizable="true" afterClose="onDialogClose">
+        
+        <content>
+            <ScrollContainer height="100%" width="100%" horizontal="false" vertical="true">
+                <VBox class="sapUiTinyMargin">
+                    
+                    <!-- Header Section -->
+                    <Panel headerText="Basic Information" class="sapUiResponsiveMargin sapUiNoMarginBottom" width="auto" >
+                        <content>
+                            <f:SimpleForm editable="false" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="4" labelSpanM="4" labelSpanS="12">
+                                
+                                <f:content>
+                                    <Label text="RFQ ID:"/>
+                                    <Text text="{ID}"/>
+                                    
+                                    <Label text="Title:"/>
+                                    <Text text="{title}"/>
+                                    
+                                    <Label text="Description:"/>
+                                    <Text text="{description}" maxLines="3"/>
+                                    
+                                    <Label text="Status:"/>
+                                    <ObjectStatus 
+                                        text="{path: 'status', formatter: '.formatStatus'}" 
+                                        state="{path: 'status', formatter: '.formatStatusState'}"/>
+                                    
+                                    <Label text="Due Date:"/>
+                                    <Text text="{path: 'due_date', formatter: '.formatDate'}"/>
+                                    
+                                    <Label text="Created Date:"/>
+                                    <Text text="{path: 'created_at', formatter: '.formatDate'}"/>
+                                </f:content>
+                            </f:SimpleForm>
+                        </content>
+                    </Panel>
+                    
+                    <!-- Creator Information -->
+                    <Panel headerText="Creator Information" class="sapUiResponsiveMargin sapUiNoMarginBottom" width="auto">
+                        <content>
+                            <f:SimpleForm editable="false" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="4" labelSpanM="4" labelSpanS="12">
+                                <f:content>
+                                    <Label text="Created By:"/>
+                                    <Text text="{created_by/name}"/>
+                                    
+                                    <Label text="Creator Email:"/>
+                                    <Link text="{created_by/email}" href="mailto:{created_by/email}"/>
+                                    
+                                    <Label text="Creator Role:"/>
+                                    <Text text="{path: 'created_by/role', formatter: '.formatRole'}"/>
+                                    
+                                    <Label text="Country:"/>
+                                    <Text text="{created_by/country}"/>
+                                    
+                                    <Label text="Creator Status:"/>
+                                    <ObjectStatus 
+                                        text="{path: 'created_by/status', formatter: '.formatStatus'}" 
+                                        state="{path: 'created_by/status', formatter: '.formatStatusState'}"/>
+                                    
+                                    <Label text="Creator ID:"/>
+                                    <Text text="{created_by/ID}"/>
+                                </f:content>
+                            </f:SimpleForm>
+                        </content>
+                    </Panel>
+                    
+                    <!-- RFQ Items Section - Primary display using 'items' array -->
+                    <Panel headerText="RFQ Items ({= ${items}.length || 0 })" class="sapUiResponsiveMargin" width="auto">
+                        <content>
+                            <Table items="{items}" width="100%" class="sapUiResponsiveContentPadding">
+                                <columns>
+                                    <Column width="20%">
+                                        <Text text="Material Code"/>
+                                    </Column>
+                                    <Column width="30%">
+                                        <Text text="Description"/>
+                                    </Column>
+                                    <Column width="15%">
+                                        <Text text="Quantity"/>
+                                    </Column>
+                                    <Column width="20%">
+                                        <Text text="Unit of Measure"/>
+                                    </Column>
+                                    <Column width="15%">
+                                        <Text text="Due Date"/>
+                                    </Column>
+                                </columns>
+                                <items>
+                                    <ColumnListItem>
+                                        <cells>
+                                            <Text text="{material_code}"/>
+                                            <Text text="{description}" maxLines="2"/>
+                                            <Text text="{quantity}"/>
+                                            <Text text="{unit_of_measure/description}"/>
+                                            <Text text="{path: 'due_date', formatter: '.formatDate'}"/>
+                                        </cells>
+                                    </ColumnListItem>
+                                </items>
+                                <!-- No Items message -->
+                                <noData>
+                                    <Text text="No RFQ items found"/>
+                                </noData>
+                            </Table>
+                        </content>
+                    </Panel>
+                    
+                    <!-- Debug Panel - Show both arrays for comparison (Optional - Remove in production) -->
+                    <Panel headerText="Debug: RFQItems Array ({= ${RFQItems}.length || 0 })" 
+                           class="sapUiResponsiveMargin" 
+                           width="auto" 
+                           visible="{= ${RFQItems}.length > 0 }">
+                        <content>
+                            <Table items="{RFQItems}" width="100%" class="sapUiResponsiveContentPadding">
+                                <columns>
+                                    <Column>
+                                        <Text text="Material Code"/>
+                                    </Column>
+                                    <Column>
+                                        <Text text="Description"/>
+                                    </Column>
+                                    <Column>
+                                        <Text text="Quantity"/>
+                                    </Column>
+                                    <Column>
+                                        <Text text="Unit of Measure"/>
+                                    </Column>
+                                    <Column>
+                                        <Text text="Parent RFQ Title"/>
+                                    </Column>
+                                </columns>
+                                <items>
+                                    <ColumnListItem>
+                                        <cells>
+                                            <Text text="{material_code}"/>
+                                            <Text text="{description}" maxLines="2"/>
+                                            <Text text="{quantity}"/>
+                                            <Text text="{unit_of_measure/description}"/>
+                                            <Text text="{frq_id/title}"/>
+                                        </cells>
+                                    </ColumnListItem>
+                                </items>
+                            </Table>
+                        </content>
+                    </Panel>
+                    
+                </VBox>
+            </ScrollContainer>
+        </content>
+        
+        <buttons>
+            <Button text="Download" press="onDownloadRFQ" icon="sap-icon://download"/>
+            <Button text="Close" press="onCloseDialog"/>
+        </buttons>
+        
+    </Dialog>
+</core:FragmentDefinition>

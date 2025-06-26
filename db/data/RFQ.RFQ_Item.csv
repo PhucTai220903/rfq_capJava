@@ -1,0 +1,4 @@
+ID,frq_id_ID,material_code,description,due_date,quantity,unit_of_measure_code
+99999999-9999-9999-9999-999999999999,77777777-7777-7777-7777-777777777777,PAPER-A4,A4 Copy Paper,2024-02-28T23:59:59Z,1000,PCS
+aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa,77777777-7777-7777-7777-777777777777,PEN-BLK,Black Ballpoint Pens,2024-02-28T23:59:59Z,500,PCS
+bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb,88888888-8888-8888-8888-888888888888,STEEL-ROD,Steel Rod 10mm,2024-03-15T23:59:59Z,100,M
