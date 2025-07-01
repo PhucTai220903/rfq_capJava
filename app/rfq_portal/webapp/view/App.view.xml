@@ -2,46 +2,51 @@
     displayBlock="true"
     xmlns:mvc="sap.ui.core.mvc"
     xmlns="sap.m"
-    xmlns:tnt="sap.tnt">
-    
-    <!-- Main Shell Container -->
+    xmlns:tnt="sap.tnt"
+    xmlns:core="sap.ui.core">
+
     <tnt:ToolPage id="toolPage">
-        <!-- Fixed Header -->
+        
+        <!-- Fixed Custom Header (chuẩn) -->
         <tnt:header>
             <tnt:ToolHeader>
-                <Button id="sideNavigationToggleButton" 
-                        icon="sap-icon://menu2" 
-                        type="Transparent" 
-                        press="onSideNavButtonPress"
-                        tooltip="Toggle Side Navigation" />
-                <Title text="{i18n>title}" />
+                <Button icon="sap-icon://menu2" press="onSideNavButtonPress" />
+                <Image src="images/logo.png" height="50px" />
+                <Title text="Application" level="H2" />
+                <ToolbarSpacer />
+                <Button icon="sap-icon://search"/>
+                <Button icon="sap-icon://bell"/>
+                <Avatar initials="SN" displaySize="XS" />
             </tnt:ToolHeader>
         </tnt:header>
-        
+
         <!-- Fixed Side Navigation -->
         <tnt:sideContent>
             <tnt:SideNavigation id="sideNavigation" expanded="false">
                 <tnt:NavigationList>
-                    <tnt:NavigationListItem key="parent-modules" text="Modules" icon="sap-icon://product">
-                        <tnt:NavigationListItem key="dashboard" text="Dashboard" icon="sap-icon://home" />
-                        <tnt:NavigationListItem key="purchase-request" text="Purchase Request" icon="sap-icon://home" />
-                        <tnt:NavigationListItem key="rfq" text="Request for Quotation" icon="sap-icon://document" />
-                        <tnt:NavigationListItem key="purchase-order" text="Purchase Order" icon="sap-icon://order-status" />
-                        <tnt:NavigationListItem key="contract" text="Contract" icon="sap-icon://decision" />
-                        <tnt:NavigationListItem key="vendor" text="Vendor" icon="sap-icon://supplier" />
-                        <tnt:NavigationListItem key="inventory" text="Inventory" icon="sap-icon://inventory" />
-                        <tnt:NavigationListItem key="reporting" text="Reporting" icon="sap-icon://bar-chart" />
+                    <tnt:NavigationListItem key="parent-modules" text="Modules" icon="sap-icon://product" selectable="false">
+                        <tnt:NavigationListItem key="dashboard" text="Dashboard"  />
+                        <tnt:NavigationListItem key="purchase-request" text="Purchase Request"  />
+                        <tnt:NavigationListItem key="rfq" text="Request for Quotation"  />
+                        <tnt:NavigationListItem key="purchase-order" text="Purchase Order"  />
+                        <tnt:NavigationListItem key="contract" text="Contract"  />
+                        <tnt:NavigationListItem key="vendor" text="Vendor"  />
+                        <tnt:NavigationListItem key="inventory" text="Inventory"  />
+                        <tnt:NavigationListItem key="reporting" text="Reporting"  />
                     </tnt:NavigationListItem>
-                    <tnt:NavigationListItem key="parent-general" text="General" icon="sap-icon://settings" >
-                        <tnt:NavigationListItem key="account" text="Account" icon="sap-icon://person-placeholder" />
+                    <tnt:NavigationListItem key="parent-general" text="General" icon="sap-icon://settings" selectable="false">
+                        <tnt:NavigationListItem key="account" text="Account" />
                     </tnt:NavigationListItem>
                 </tnt:NavigationList>
             </tnt:SideNavigation>
         </tnt:sideContent>
-        
+
+        <!-- Main Content Area -->
         <tnt:mainContents>
-            <App id="app" class="sapUiSizeCompact">
-            </App>
+            <ScrollContainer vertical="true" height="100%">
+                <App id="app" class="sapUiSizeCompact" />
+            </ScrollContainer>
         </tnt:mainContents>
+
     </tnt:ToolPage>
 </mvc:View>

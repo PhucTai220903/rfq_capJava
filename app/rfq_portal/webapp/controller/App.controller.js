@@ -5,7 +5,6 @@ sap.ui.define([
 
   return Controller.extend("rfqportal.controller.App", {
       onInit() {
-          console.log("App controller initialized");
           this._setupSideNavigation();
       },
 
@@ -52,8 +51,6 @@ sap.ui.define([
           var oItem = oEvent.getParameter("item");
           var sKey = oItem.getKey();
           
-          console.log("Navigation item selected:", sKey);
-          
           if (sKey && sKey.startsWith("parent-")) {
               var bExpanded = oItem.getExpanded();
               oItem.setExpanded(!bExpanded);
@@ -74,6 +71,7 @@ sap.ui.define([
                 case "purchase-order":
                     break;
                 case "contract":
+                    oRouter.navTo("RouteContract");
                     break;
                 case "vendor":
                     oRouter.navTo("RouteVendor");

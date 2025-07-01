@@ -5,8 +5,6 @@ sap.ui.define([
 
     return Controller.extend("rfqportal.controller.Dashboard", {
         onInit() {
-            console.log("Dashboard controller onInit");
-            // Dashboard specific logic here
         }
     });
 });

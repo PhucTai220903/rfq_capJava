@@ -7,7 +7,6 @@ sap.ui.define([
 
     return BaseController.extend("rfqportal.controller.VendorView", {
         onInit() {
-            console.log("VendorView controller onInit");
         }
         
         // Các formatters đã inherit từ BaseController

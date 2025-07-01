@@ -61,7 +61,8 @@
       "libs": {
         "sap.m": {},
         "sap.ui.core": {},
-        "sap.tnt": {}
+        "sap.tnt": {},
+        "sap.ui.mdc": {}
       }
     },
     "models": {
@@ -120,7 +121,14 @@
           "name": "RouteVendor",
           "pattern": "vendor",
           "target": [
-            "TargetVendor" 
+            "TargetVendor"
+          ]
+        },
+        {
+          "name": "RouteContract",
+          "pattern": "contract",
+          "target": [
+            "TargetContract"
           ]
         },
         {
@@ -146,6 +154,10 @@
         "TargetVendor": {
           "id": "VendorView",
           "name": "VendorView"
+        },
+        "TargetContract": {
+          "id": "ContractView",
+          "name": "ContractView"
         }
       }
     },

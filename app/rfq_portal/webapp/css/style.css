@@ -1,1 +1,11 @@
 /* Enter your custom styles here */
+.customLinkIcon .sapUiIcon {
+    font-size: 16px;      
+    vertical-align: baseline;
+}
+
+.customLinkText .sapMLnkText {
+    font-size: 14px;       
+    font-weight: 400;      
+    vertical-align: middle; 
+}

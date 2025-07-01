@@ -6,7 +6,6 @@ sap.ui.define([
 
     return Controller.extend("rfqportal.controller.NotImplemented", {
         onInit() {
-            console.log("NotImplemented controller onInit");
             
             var oRouter = this.getOwnerComponent().getRouter();
             oRouter.getRoute("RouteNotImplemented").attachMatched(this._onRouteMatched, this);
