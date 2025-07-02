@@ -127,6 +127,13 @@
           ]
         },
         {
+          "name": "RouteRFQView",
+          "pattern": "admin/rfq",
+          "target": [
+            "TargetRFQ"
+          ]
+        },
+        {
           "name": "RouteVendor",
           "pattern": "admin/vendor",
           "target": [
@@ -150,26 +157,43 @@
           "controlId": "app_page"
         },
         "TargetAppAdmin": {
-          "id": "AppAdmin",
-          "name": "AppAdmin",
-          "viewName": "AppAdmin",
-          "viewPath": "rfqportal.view.viewAdmin"
+          "viewName": "viewAdmin.AppAdmin",
+          "viewPath": "rfqportal.view",
+          "viewType": "XML",
+          "controlAggregation": "pages",
+          "controlId": "app_page"
         },
         "TargetDashboard": {
-          "id": "Dashboard",
-          "name": "Dashboard",
-          "viewName": "Dashboard",
-          "viewPath": "rfqportal.view.viewAdmin"
+          "viewName": "viewAdmin.Dashboard",
+          "viewPath": "rfqportal.view",
+          "viewType": "XML",
+          "controlAggregation": "pages",
+          "controlId": "app",
+          "parent": "TargetAppAdmin"
+        },
+        "TargetRFQ":{
+          "viewName": "viewAdmin.RFQView",
+          "viewPath": "rfqportal.view",
+          "viewType": "XML",
+          "controlAggregation": "pages",
+          "controlId": "app",
+          "parent": "TargetAppAdmin"
         },
         "TargetVendor": {
-          "id": "VendorView",
-          "name": "VendorView",
-          "viewPath": "rfqportal.view.viewAdmin"
+          "viewName": "viewAdmin.VendorView",
+          "viewPath": "rfqportal.view",
+          "viewType": "XML",
+          "controlAggregation": "pages",
+          "controlId": "app",
+          "parent": "TargetAppAdmin"
         },
         "TargetContract": {
-          "id": "ContractView",
-          "name": "ContractView",
-          "viewPath": "rfqportal.view.viewAdmin"
+          "viewName": "viewAdmin.ContractView",
+          "viewPath": "rfqportal.view",
+          "viewType": "XML",
+          "controlAggregation": "pages",
+          "controlId": "app",
+          "parent": "TargetAppAdmin"
         }
       }
     },
