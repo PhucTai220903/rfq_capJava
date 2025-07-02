@@ -94,6 +94,12 @@ sap.ui.define([
             return oDate.toLocaleDateString("en-GB");
         },
 
+        getInitials: function(sName) {
+            if (!sName) return "";
+            const aWords = sName.split(" ");
+            return aWords.map(word => word.charAt(0)).join("").substr(0, 2).toUpperCase();
+        },
+
         onNavBack: function() {
             var oRouter = this.getRouter();
             oRouter.navTo("RouteDashboard");

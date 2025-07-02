@@ -1,4 +1,4 @@
-<mvc:View controllerName="rfqportal.controller.Dashboard"
+<mvc:View controllerName="rfqportal.controller.AdminController.Dashboard"
     xmlns:mvc="sap.ui.core.mvc"
     xmlns="sap.m">
     

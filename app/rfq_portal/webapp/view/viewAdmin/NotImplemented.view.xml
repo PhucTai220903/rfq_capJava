@@ -1,4 +1,4 @@
-<mvc:View controllerName="rfqportal.controller.NotImplemented"
+<mvc:View controllerName="rfqportal.controller.AdminController.NotImplemented"
     xmlns:mvc="sap.ui.core.mvc"
     xmlns="sap.m">
     

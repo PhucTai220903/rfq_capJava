@@ -1,5 +1,5 @@
 <mvc:View
-    controllerName="rfqportal.controller.RFQView"
+    controllerName="rfqportal.controller.AdminController.RFQView"
     displayBlock="true"
     xmlns:mvc="sap.ui.core.mvc"
     xmlns="sap.m"

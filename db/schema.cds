@@ -53,6 +53,9 @@ entity VENDOR
     role : Role;
     status : Status;
     country : String(100);
+    phone : String(30);         
+    address : String(200);      
+    tax_code : String(50);      
 }
 
 entity SUPPLIER

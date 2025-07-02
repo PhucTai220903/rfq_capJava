@@ -1,4 +1,4 @@
-ID,created_at,name,email,role,status,country
-44444444-4444-4444-4444-444444444444,2024-01-18T08:00:00Z,ABC Supplies Co,contact@abcsupplies.com,V,A,Germany
-55555555-5555-5555-5555-555555555555,2024-01-19T09:00:00Z,XYZ Manufacturing,sales@xyzmanuf.com,V,A,China
-66666666-6666-6666-6666-666666666666,2024-01-20T10:00:00Z,Global Parts Ltd,info@globalparts.com,V,A,India
+ID,created_at,name,email,role,status,country,phone,address,tax_code
+44444444-4444-4444-4444-444444444444,2024-01-18T08:00:00Z,ABC Supplies Co,contact@abcsupplies.com,V,A,Germany,+49-30-1234567,"123 Berlin Str, Berlin","DE123456789"
+55555555-5555-5555-5555-555555555555,2024-01-19T09:00:00Z,XYZ Manufacturing,sales@xyzmanuf.com,V,A,China,+86-10-9876543,"456 Beijing Rd, Beijing","CN987654321"
+66666666-6666-6666-6666-666666666666,2024-01-20T10:00:00Z,Global Parts Ltd,info@globalparts.com,V,A,India,+91-22-5555555,"789 Mumbai Ave, Mumbai","IN555555555"

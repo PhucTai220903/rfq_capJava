@@ -62,7 +62,9 @@
         "sap.m": {},
         "sap.ui.core": {},
         "sap.tnt": {},
-        "sap.ui.mdc": {}
+        "sap.ui.mdc": {},
+        "sap.f": {},
+        "sap.uxap": {}
       }
     },
     "models": {
@@ -95,7 +97,7 @@
       "config": {
         "routerClass": "sap.m.routing.Router",
         "controlAggregation": "pages",
-        "controlId": "app",
+        "controlId": "app_page",
         "transition": "slide",
         "type": "View",
         "viewType": "XML",
@@ -104,67 +106,77 @@
       },
       "routes": [
         {
-          "name": "RouteDashboard",
+          "name": "RouteGuest",
           "pattern": "",
+          "target": [
+            "TargetGuest"
+          ]
+        },
+        {
+          "name": "RouteAppAdmin",
+          "pattern": "admin/appadmin",
+          "target": [
+            "TargetAppAdmin"
+          ]
+        },
+        {
+          "name": "RouteDashboard",
+          "pattern": "admin/dashboard",
           "target": [
             "TargetDashboard"
           ]
         },
         {
-          "name": "RouteRFQView",
-          "pattern": "rfq",
-          "target": [
-            "TargetRFQView"
-          ]
-        },
-        {
           "name": "RouteVendor",
-          "pattern": "vendor",
+          "pattern": "admin/vendor",
           "target": [
             "TargetVendor"
           ]
         },
         {
           "name": "RouteContract",
-          "pattern": "contract",
+          "pattern": "admin/contract",
           "target": [
             "TargetContract"
           ]
-        },
-        {
-          "name": "RouteNotImplemented",
-          "pattern": "module/{module}",
-          "target": "TargetNotImplemented"
         }
-        
       ],
       "targets": {
+        "TargetGuest": {
+          "viewName": "viewGuest.GuestView",
+          "viewPath": "rfqportal.view",
+          "viewType": "XML",
+          "controlAggregation": "pages",
+          "controlId": "app_page"
+        },
+        "TargetAppAdmin": {
+          "id": "AppAdmin",
+          "name": "AppAdmin",
+          "viewName": "AppAdmin",
+          "viewPath": "rfqportal.view.viewAdmin"
+        },
         "TargetDashboard": {
           "id": "Dashboard",
-          "name": "Dashboard"
-        },
-        "TargetRFQView": {
-          "id": "RFQView",
-          "name": "RFQView"
-        },
-        "TargetNotImplemented": {
-          "id": "NotImplemented",
-          "name": "NotImplemented"
+          "name": "Dashboard",
+          "viewName": "Dashboard",
+          "viewPath": "rfqportal.view.viewAdmin"
         },
         "TargetVendor": {
           "id": "VendorView",
-          "name": "VendorView"
+          "name": "VendorView",
+          "viewPath": "rfqportal.view.viewAdmin"
         },
         "TargetContract": {
           "id": "ContractView",
-          "name": "ContractView"
+          "name": "ContractView",
+          "viewPath": "rfqportal.view.viewAdmin"
         }
       }
     },
     "rootView": {
       "viewName": "rfqportal.view.App",
       "type": "XML",
-      "id": "App",
+      "id": "app",
       "async": true
     },
     "flexEnabled": false

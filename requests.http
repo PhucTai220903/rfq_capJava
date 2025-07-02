@@ -11,3 +11,9 @@ Content-Type: application/json
 GET {{adminService}}/Vendors
 Authorization: Basic admin:admin
 Content-Type: application/json
+
+
+###
+GET {{adminService}}/Suppliers?$select=supplier_id&$top=1
+Authorization: Basic admin:admin
+Accept: application/json;odata.metadata=minimal

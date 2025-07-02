@@ -11,7 +11,6 @@ service AdminService @(path:'/admin')
     [
         { grant : [ '*' ], to : [ 'ADMIN' ] }
     ];
-
     entity RFQs as
         projection on RFQ.RFQ {
            *,
@@ -41,6 +40,21 @@ service AdminService @(path:'/admin')
 
     entity UoMs as
         projection on RFQ.UoM;
+
+    entity VendorRFQs as
+        projection on RFQ.SUPPLIER {
+            ID,
+            supplier_id,
+            invited_at,
+            status,
+            remarks,
+            rfq_id.ID as rfqId,
+            rfq_id.title as rfqTitle,
+            rfq_id.description as rfqDescription,
+            rfq_id.due_date as dueDate,
+            rfq_id.status as rfqStatus,
+            rfq_id.created_at as rfqCreatedAt
+        };
 }
 
 service BuyerService @(path:'/buyer')

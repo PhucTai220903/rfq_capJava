@@ -1,0 +1,73 @@
+<mvc:View
+    controllerName="rfqportal.controller.Login"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:f="sap.f"
+    xmlns:form="sap.ui.layout.form">
+    
+    <Page id="loginPage" title="RFQ Portal - Login" showNavButton="false">
+        <content>
+            <VBox class="sapUiMediumMargin" justifyContent="Center" alignItems="Center" height="100%">
+                <Panel headerText="Login to RFQ Portal" width="400px" class="sapUiResponsiveMargin">
+                    <form:SimpleForm
+                        editable="true"
+                        layout="ResponsiveGridLayout"
+                        labelSpanXL="4"
+                        labelSpanL="4"
+                        labelSpanM="12"
+                        labelSpanS="12"
+                        adjustLabelSpan="false"
+                        emptySpanXL="0"
+                        emptySpanL="0"
+                        emptySpanM="0"
+                        emptySpanS="0"
+                        columnsXL="1"
+                        columnsL="1"
+                        columnsM="1"
+                        singleContainerFullSize="false">
+                        <form:content>
+                            <Label text="Username:" required="true"/>
+                            <Input 
+                                id="usernameInput"
+                                value="{/username}"
+                                placeholder="Enter your username"
+                                valueState="{/usernameState}"
+                                valueStateText="{/usernameStateText}"/>
+                            
+                            <Label text="Password:" required="true"/>
+                            <Input 
+                                id="passwordInput"
+                                type="Password"
+                                value="{/password}"
+                                placeholder="Enter your password"
+                                valueState="{/passwordState}"
+                                valueStateText="{/passwordStateText}"/>
+                            
+                            <Label text="Role:"/>
+                            <ComboBox 
+                                id="roleComboBox"
+                                selectedKey="{/selectedRole}"
+                                items="{/roles}"
+                                placeholder="Select your role">
+                                <core:Item key="{key}" text="{text}"/>
+                            </ComboBox>
+                        </form:content>
+                    </form:SimpleForm>
+                    
+                    <Button 
+                        text="Login" 
+                        press="onLogin" 
+                        type="Emphasized"
+                        width="100%"
+                        class="sapUiMediumMargin"/>
+                    
+                    <Button 
+                        text="Back to Home" 
+                        press="onBackToHome" 
+                        type="Transparent"
+                        width="100%"/>
+                </Panel>
+            </VBox>
+        </content>
+    </Page>
+</mvc:View>
