@@ -1,0 +1,208 @@
+{
+  "_version": "1.65.0",
+  "sap.app": {
+    "id": "rfqportal",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:basic",
+      "version": "1.18.0",
+      "toolsId": "e20cd448-3e23-41f7-a6cd-c7f99403f625"
+    },
+    "dataSources": {
+      "mainService": {
+        "uri": "/odata/v4/admin/",
+        "type": "OData",
+        "settings": {
+          "annotations": [],
+          "odataVersion": "4.0"
+        }
+      }
+    },
+    "crossNavigation": {
+      "inbounds": {
+        "rfq_portal-display": {
+          "semanticObject": "rfq_portal",
+          "action": "display",
+          "title": "{{rfq_portal-display.flpTitle}}",
+          "signature": {
+            "parameters": {},
+            "additionalParameters": "allowed"
+          }
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "dependencies": {
+      "minUI5Version": "1.136.2",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {},
+        "sap.tnt": {},
+        "sap.ui.mdc": {},
+        "sap.f": {},
+        "sap.uxap": {}
+      }
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "rfqportal.i18n.i18n"
+        }
+      },
+      "": {
+        "dataSource": "mainService",
+        "type": "sap.ui.model.odata.v4.ODataModel",
+        "preload": true,
+        "settings": {
+          "operationMode": "Server",
+          "autoExpandSelect": true,
+          "earlyRequests": true,
+          "synchronizationMode": "None"
+        }
+      }
+    },
+    "resources": {
+      "css": [
+        {
+          "uri": "css/style.css"
+        }
+      ]
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "controlAggregation": "pages",
+        "controlId": "app_page",
+        "transition": "slide",
+        "type": "View",
+        "viewType": "XML",
+        "path": "rfqportal.view",
+        "async": true
+      },
+      "routes": [
+        {
+          "name": "RouteGuest",
+          "pattern": "",
+          "target": [
+            "TargetGuest"
+          ]
+        },
+        {
+          "name": "RouteAppAdmin",
+          "pattern": "admin/appadmin",
+          "target": [
+            "TargetAppAdmin"
+          ]
+        },
+        {
+          "name": "RouteDashboard",
+          "pattern": "admin/dashboard",
+          "target": [
+            "TargetDashboard"
+          ]
+        },
+        {
+          "name": "RouteRFQView",
+          "pattern": "admin/rfq",
+          "target": [
+            "TargetRFQ"
+          ]
+        },
+        {
+          "name": "RouteVendor",
+          "pattern": "admin/vendor",
+          "target": [
+            "TargetVendor"
+          ]
+        },
+        {
+          "name": "RouteContract",
+          "pattern": "admin/contract",
+          "target": [
+            "TargetContract"
+          ]
+        }
+      ],
+      "targets": {
+        "TargetGuest": {
+          "viewName": "viewGuest.GuestView",
+          "viewPath": "rfqportal.view",
+          "viewType": "XML",
+          "controlAggregation": "pages",
+          "controlId": "app_page"
+        },
+        "TargetAppAdmin": {
+          "viewName": "viewAdmin.AppAdmin",
+          "viewPath": "rfqportal.view",
+          "viewType": "XML",
+          "controlAggregation": "pages",
+          "controlId": "app_page"
+        },
+        "TargetDashboard": {
+          "viewName": "viewAdmin.Dashboard",
+          "viewPath": "rfqportal.view",
+          "viewType": "XML",
+          "controlAggregation": "pages",
+          "controlId": "app",
+          "parent": "TargetAppAdmin"
+        },
+        "TargetRFQ":{
+          "viewName": "viewAdmin.RFQView",
+          "viewPath": "rfqportal.view",
+          "viewType": "XML",
+          "controlAggregation": "pages",
+          "controlId": "app",
+          "parent": "TargetAppAdmin"
+        },
+        "TargetVendor": {
+          "viewName": "viewAdmin.VendorView",
+          "viewPath": "rfqportal.view",
+          "viewType": "XML",
+          "controlAggregation": "pages",
+          "controlId": "app",
+          "parent": "TargetAppAdmin"
+        },
+        "TargetContract": {
+          "viewName": "viewAdmin.ContractView",
+          "viewPath": "rfqportal.view",
+          "viewType": "XML",
+          "controlAggregation": "pages",
+          "controlId": "app",
+          "parent": "TargetAppAdmin"
+        }
+      }
+    },
+    "rootView": {
+      "viewName": "rfqportal.view.App",
+      "type": "XML",
+      "id": "app",
+      "async": true
+    },
+    "flexEnabled": false
+  }
+}

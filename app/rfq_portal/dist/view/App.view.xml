@@ -1,0 +1,5 @@
+<mvc:View controllerName="rfqportal.controller.App"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m" displayBlock="true">
+    <App id="app_page" class="sapUiSizeCompact"/>
+</mvc:View>

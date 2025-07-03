@@ -1,0 +1,24 @@
+<mvc:View controllerName="rfqportal.controller.AdminController.Dashboard"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+
+    <Page id="dashboardPage" title="Dashboard" showNavButton="false">
+        <content>
+            <VBox class="sapUiMediumMargin">
+                <Title text="Welcome to RFQ Portal Dashboard" level="H2" class="sapUiMediumMarginBottom"/>
+                <Text text="Select a module from the side navigation to get started." class="sapUiMediumMarginBottom"/>
+
+                <!-- Dashboard content -->
+                <Panel headerText="Quick Overview" class="sapUiResponsiveMargin">
+                    <content>
+                        <VBox>
+                            <Text text="• Total RFQs: Loading..." />
+                            <Text text="• Active RFQs: Loading..." />
+                            <Text text="• Pending RFQs: Loading..." />
+                        </VBox>
+                    </content>
+                </Panel>
+            </VBox>
+        </content>
+    </Page>
+</mvc:View>

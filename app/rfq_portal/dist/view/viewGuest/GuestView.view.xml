@@ -1,0 +1,87 @@
+<mvc:View
+    controllerName="rfqportal.controller.Guest"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:form="sap.ui.layout.form">
+    <Page id="guestView_navi" title="Welcome to RFQ Portal NPT">
+        <content>
+            <VBox class="sapUiMediumMargin" justifyContent="Center" alignItems="Center" height="100%">
+                
+                <!-- Login Panel - Show when not logged in -->
+                <Panel headerText="Login to RFQ Portal" width="500px" class="sapUiResponsiveMargin"
+                       visible="{= !${/isLoggedIn}}">
+                    <form:SimpleForm
+                        editable="true"
+                        layout="ResponsiveGridLayout"
+                        labelSpanXL="4"
+                        labelSpanL="4"
+                        labelSpanM="12"
+                        labelSpanS="12">
+                        <form:content>
+                            <Label text="Username:" required="true"/>
+                            <Input 
+                                id="usernameInput"
+                                value="{/username}"
+                                placeholder="Enter your username"/>
+                            
+                            <Label text="Password:" required="true"/>
+                            <Input 
+                                id="passwordInput"
+                                type="Password"
+                                value="{/password}"
+                                placeholder="Enter your password"/>
+                            
+                            <Label text="Role:"/>
+                            <ComboBox 
+                                id="roleComboBox"
+                                selectedKey="{/selectedRole}"
+                                items="{/roles}"
+                                placeholder="Select your role">
+                                <core:Item key="{key}" text="{text}"/>
+                            </ComboBox>
+                        </form:content>
+                    </form:SimpleForm>
+                    
+                    <Button 
+                        text="Login" 
+                        press="onLogin" 
+                        type="Emphasized"
+                        width="100%"
+                        />
+                </Panel>
+                
+                <!-- User Dashboard - Show when logged in -->
+                <Panel headerText="User Dashboard" width="400px" class="sapUiResponsiveMargin"
+                       visible="{/isLoggedIn}">
+                    <VBox class="sapUiMediumMargin">
+                        <Label text="Logged in as: {/currentUser/username}" class="sapUiMediumMarginBottom"/>
+                        <Label text="Current Role: {/currentUser/role}" class="sapUiMediumMarginBottom"/>
+                        
+                        <!-- Role Switching - Only show if multiple roles available -->
+                        <Button 
+                            text="Switch Role" 
+                            press="onSwitchRole" 
+                            type="Default"
+                            width="100%"
+                            class="sapUiSmallMarginBottom"
+                            visible="{= ${/availableRoles}.length > 1}"/>
+                        
+                        <Button 
+                            text="Go to Dashboard" 
+                            press="_navigateByRole(${/currentUser/role})" 
+                            type="Emphasized"
+                            width="100%"
+                            class="sapUiSmallMarginBottom"/>
+                        
+                        <Button 
+                            text="Logout" 
+                            press="onLogout" 
+                            type="Reject"
+                            width="100%"/>
+                    </VBox>
+                </Panel>
+            </VBox>
+        </content>
+    </Page>
+</mvc:View>

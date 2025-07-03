@@ -1,0 +1,133 @@
+<mvc:View controllerName="rfqportal.controller.AdminController.RFQView" displayBlock="true"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:f="sap.f"
+    xmlns:table="sap.ui.table"
+    xmlns:core="sap.ui.core">
+
+    <f:DynamicPage id="rfqDynamicPage" toggleHeaderOnTitleClick="true" showFooter="false">
+
+        <!-- ======= Title Area (Always Visible) ======= -->
+        <f:title>
+            <f:DynamicPageTitle>
+                <f:expandedContent>
+                    <VBox>
+                        <Title text="Request for Quotations" level="H2" class="sapUiTinyMarginBottom"/>
+                        <Breadcrumbs id="rfqBreadcrumbs">
+                            <Link icon="sap-icon://product" text="Modules" press="onBreadcrumbHomePress" class="customLinkIcon customLinkText"/>
+                            <currentLocation>
+                                <Link icon="sap-icon://home" text="Dashboard" press="onBreadcrumbRFQPress" class="customLinkIcon customLinkText"/>
+                            </currentLocation>
+                        </Breadcrumbs>
+                    </VBox>
+                </f:expandedContent>
+                <f:snappedContent>
+                    <VBox>
+                        <Title text="Request for Quotations" level="H2" class="sapUiTinyMarginBottom"/>
+                        <Breadcrumbs id="rfqBreadcrumbsSnapped">
+                            <Link icon="sap-icon://product" text="Modules" press="onBreadcrumbHomePress" class="customLinkIcon customLinkText"/>
+                            <Link icon="sap-icon://home" text="Dashboard" press="onBreadcrumbRFQPress" class="customLinkIcon customLinkText"/>
+                        </Breadcrumbs>
+                    </VBox>
+                </f:snappedContent>
+            </f:DynamicPageTitle>
+        </f:title>
+
+        <!-- ======= Collapsible Header ======= -->
+        <f:header>
+            <f:DynamicPageHeader>
+                <!-- FilterBar sử dụng mdc.sample.controller.FilterbarTypes -->
+                <mdc:FilterBar id="rfqFilterBar" delegate='{"name": "sap/ui/mdc/FilterBarDelegate", "payload": {}}' p13nMode="Item,Value" showGoButton="true"
+                    xmlns:mdc="sap.ui.mdc" search="onFilterSearch">
+                    <mdc:filterItems>
+                        <mdc:FilterField label="RFQ ID" conditions="{filters>/ID}" propertyKey="ID"/>
+                        <mdc:FilterField label="Title" conditions="{filters>/title}" propertyKey="title"/>
+                        <mdc:FilterField label="Status" conditions="{filters>/status}" propertyKey="status"/>
+                    </mdc:filterItems>
+                </mdc:FilterBar>
+            </f:DynamicPageHeader>
+        </f:header>
+
+        <!-- ======= Main Content ======= -->
+        <f:content>
+            <table:Table id="rfqTable" rows="{/RFQs}" selectionMode="None" enableColumnReordering="true" enableColumnFreeze="true" rowSelectionChange="onRowPress" columnHeaderVisible="true">
+
+                <!-- Toolbar inside Table (optional) -->
+                <table:extension>
+                    <Toolbar>
+                        <Title text="RFQ List"/>
+                        <ToolbarSpacer/>
+                        <Button icon="sap-icon://refresh" press="onRefresh"/>
+                    </Toolbar>
+                </table:extension>
+
+                <!-- ========== Table Columns ========== -->
+                <table:columns>
+                    <!-- RFQ ID -->
+                    <table:Column width="10%" resizable="true" sortProperty="ID">
+                        <table:label>
+                            <Text text="RFQ ID"/>
+                        </table:label>
+                        <table:template>
+                            <Text text="{ID}" wrapping="false"/>
+                        </table:template>
+                    </table:Column>
+
+                    <!-- Title -->
+                    <table:Column width="25%" resizable="true" sortProperty="title">
+                        <table:label>
+                            <Text text="Title"/>
+                        </table:label>
+                        <table:template>
+                            <Text text="{title}" maxLines="2"/>
+                        </table:template>
+                    </table:Column>
+
+                    <!-- Description -->
+                    <table:Column width="25%" resizable="true" sortProperty="description">
+                        <table:label>
+                            <Text text="Description"/>
+                        </table:label>
+                        <table:template>
+                            <Text text="{description}" maxLines="2"/>
+                        </table:template>
+                    </table:Column>
+
+                    <!-- Due Date -->
+                    <table:Column width="15%" resizable="true" sortProperty="due_date">
+                        <table:label>
+                            <Text text="Due Date"/>
+                        </table:label>
+                        <table:template>
+                            <Text text="{path: 'due_date'}"/>
+                        </table:template>
+                    </table:Column>
+
+                    <!-- Status -->
+                    <table:Column width="10%" resizable="true" sortProperty="status">
+                        <table:label>
+                            <Text text="Status"/>
+                        </table:label>
+                        <table:template>
+                            <ObjectStatus text="{path: 'status', formatter: '.formatStatus'}" state="{path: 'status', formatter: '.formatStatusState'}"/>
+                        </table:template>
+                    </table:Column>
+
+                    <!-- Actions -->
+                    <table:Column width="15%" resizable="true">
+                        <table:label>
+                            <Text text="Actions"/>
+                        </table:label>
+                        <table:template>
+                            <HBox>
+                                <Button text="View" type="Emphasized" press="onViewDetail" icon="sap-icon://detail-view" class="sapUiTinyMarginEnd"/>
+                            </HBox>
+                        </table:template>
+                    </table:Column>
+
+                </table:columns>
+
+            </table:Table>
+        </f:content>
+    </f:DynamicPage>
+</mvc:View>
