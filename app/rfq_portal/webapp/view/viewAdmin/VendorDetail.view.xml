@@ -1,20 +1,11 @@
-<mvc:View 
-    displayBlock="true" 
-    controllerName="rfqportal.controller.AdminController.VendorDetail" 
-    height="100%"
+<mvc:View displayBlock="true" controllerName="rfqportal.controller.AdminController.VendorDetail" height="100%"
     xmlns:uxap="sap.uxap"
     xmlns:mvc="sap.ui.core.mvc"
     xmlns:m="sap.m"
     xmlns:f="sap.f"
     xmlns:form="sap.ui.layout.form">
 
-    <uxap:ObjectPageLayout id="ObjectPageLayout"
-                          showTitleInHeaderContent="true"
-                          alwaysShowContentHeader="false"
-                          preserveHeaderStateOnScroll="false"
-                          headerContentPinnable="true"
-                          isChildPage="true"
-                          upperCaseAnchorBar="false">
+    <uxap:ObjectPageLayout id="ObjectPageLayout" showTitleInHeaderContent="true" alwaysShowContentHeader="false" preserveHeaderStateOnScroll="false" headerContentPinnable="true" isChildPage="true" upperCaseAnchorBar="false">
 
         <uxap:headerTitle>
             <uxap:ObjectPageDynamicHeaderTitle>
@@ -37,21 +28,10 @@
                 </uxap:navigationActions>
 
                 <uxap:actions>
-                    <m:Button
-                        text="Edit"
-                        type="Emphasized"
-                        press="onEdit"/>
-                    <m:Button
-                        text="Delete"
-                        type="Transparent"
-                        press="onDelete"/>
-                    <m:Button
-                        text="Contact"
-                        type="Transparent"
-                        press="onContact"/>
-                    <m:Button
-                        icon="sap-icon://action"
-                        type="Transparent"/>
+                    <m:Button text="Edit" type="Emphasized" press="onEdit"/>
+                    <m:Button text="Delete" type="Transparent" press="onDelete"/>
+                    <m:Button text="Contact" type="Transparent" press="onContact"/>
+                    <m:Button icon="sap-icon://action" type="Transparent"/>
                 </uxap:actions>
 
             </uxap:ObjectPageDynamicHeaderTitle>
@@ -59,10 +39,7 @@
 
         <uxap:headerContent>
             <m:FlexBox wrap="Wrap" fitContainer="true" alignItems="Stretch">
-                <m:Avatar initials="{parts: ['name'], formatter: '.getInitials'}"
-                          displaySize="L"
-                          displayShape="Circle"
-                          class="sapUiTinyMarginEnd">
+                <m:Avatar initials="{parts: ['name'], formatter: '.getInitials'}" displaySize="L" displayShape="Circle" class="sapUiTinyMarginEnd">
                 </m:Avatar>
                 <m:VBox justifyContent="Center" class="sapUiSmallMarginEnd">
                     <m:Label text="Vendor ID"/>
@@ -88,16 +65,7 @@
                 <uxap:subSections>
                     <uxap:ObjectPageSubSection>
                         <uxap:blocks>
-                            <form:SimpleForm
-                                maxContainerCols="2"
-                                editable="false"
-                                layout="ResponsiveGridLayout"
-                                labelSpanL="12"
-                                labelSpanM="12"
-                                emptySpanL="0"
-                                emptySpanM="0"
-                                columnsL="1"
-                                columnsM="1">
+                            <form:SimpleForm maxContainerCols="2" editable="false" layout="ResponsiveGridLayout" labelSpanL="12" labelSpanM="12" emptySpanL="0" emptySpanM="0" columnsL="1" columnsM="1">
                                 <form:content>
                                     <m:Label text="Vendor ID"/>
                                     <m:Text text="{ID}"/>
@@ -122,10 +90,7 @@
                 <uxap:subSections>
                     <uxap:ObjectPageSubSection>
                         <uxap:blocks>
-                            <m:Table
-                                id="vendorRFQsTable"
-                                growing="true"
-                                growingThreshold="20">
+                            <m:Table id="vendorRFQsTable" growing="true" growingThreshold="20">
                                 <m:columns>
                                     <m:Column>
                                         <m:Text text="RFQ ID"/>
@@ -153,10 +118,7 @@
                 <uxap:subSections>
                     <uxap:ObjectPageSubSection>
                         <uxap:blocks>
-                            <form:SimpleForm
-                                maxContainerCols="2"
-                                editable="false"
-                                layout="ResponsiveGridLayout">
+                            <form:SimpleForm maxContainerCols="2" editable="false" layout="ResponsiveGridLayout">
                                 <form:content>
                                     <m:Label text="Phone"/>
                                     <m:Text text="{phone}"/>

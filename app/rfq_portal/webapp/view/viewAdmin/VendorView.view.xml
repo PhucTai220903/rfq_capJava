@@ -1,11 +1,9 @@
-<mvc:View
-    controllerName="rfqportal.controller.AdminController.VendorView"
-    xmlns:mvc="sap.ui.core.mvc"
-    displayBlock="true"
+<mvc:View controllerName="rfqportal.controller.AdminController.VendorView"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
     xmlns="sap.m"
     xmlns:f="sap.f"
     xmlns:core="sap.ui.core">
-    
+
     <f:FlexibleColumnLayout id="fcl" layout="OneColumn" backgroundDesign="Solid">
         <f:beginColumnPages>
             <Page id="vendorPage" title="Vendor Management">
@@ -44,9 +42,7 @@
                                         <Text text="{name}"/>
                                         <Text text="{email}"/>
                                         <Text text="{country}"/>
-                                        <ObjectStatus 
-                                            text="{path: 'status', formatter: '.formatStatus'}"
-                                            state="{path: 'status', formatter: '.formatStatusState'}"/>
+                                        <ObjectStatus text="{path: 'status', formatter: '.formatStatus'}" state="{path: 'status', formatter: '.formatStatusState'}"/>
                                     </cells>
                                 </ColumnListItem>
                             </items>
@@ -55,7 +51,7 @@
                 </content>
             </Page>
         </f:beginColumnPages>
-        
+
         <f:midColumnPages>
             <!-- VendorDetail will be loaded here dynamically -->
         </f:midColumnPages>

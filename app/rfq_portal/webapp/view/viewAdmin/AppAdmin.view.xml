@@ -1,12 +1,11 @@
-<mvc:View controllerName="rfqportal.controller.AdminController.AppAdmin"
-    displayBlock="true"
+<mvc:View controllerName="rfqportal.controller.AdminController.AppAdmin" displayBlock="true"
     xmlns:mvc="sap.ui.core.mvc"
     xmlns="sap.m"
     xmlns:tnt="sap.tnt"
     xmlns:core="sap.ui.core">
 
     <tnt:ToolPage id="toolPage">
-        
+
         <!-- Fixed Custom Header (chuẩn) -->
         <tnt:header>
             <tnt:ToolHeader>
@@ -25,14 +24,14 @@
             <tnt:SideNavigation id="sideNavigation" expanded="false">
                 <tnt:NavigationList>
                     <tnt:NavigationListItem key="parent-modules" text="Modules" icon="sap-icon://product" selectable="false">
-                        <tnt:NavigationListItem key="dashboard" text="Dashboard"  />
-                        <tnt:NavigationListItem key="purchase-request" text="Purchase Request"  />
-                        <tnt:NavigationListItem key="rfq" text="Request for Quotation"  />
-                        <tnt:NavigationListItem key="purchase-order" text="Purchase Order"  />
-                        <tnt:NavigationListItem key="contract" text="Contract"  />
-                        <tnt:NavigationListItem key="vendor" text="Vendor"  />
-                        <tnt:NavigationListItem key="inventory" text="Inventory"  />
-                        <tnt:NavigationListItem key="reporting" text="Reporting"  />
+                        <tnt:NavigationListItem key="dashboard" text="Dashboard" />
+                        <tnt:NavigationListItem key="purchase-request" text="Purchase Request" />
+                        <tnt:NavigationListItem key="rfq" text="Request for Quotation" />
+                        <tnt:NavigationListItem key="purchase-order" text="Purchase Order" />
+                        <tnt:NavigationListItem key="contract" text="Contract" />
+                        <tnt:NavigationListItem key="vendor" text="Vendor" />
+                        <tnt:NavigationListItem key="inventory" text="Inventory" />
+                        <tnt:NavigationListItem key="reporting" text="Reporting" />
                     </tnt:NavigationListItem>
                     <tnt:NavigationListItem key="parent-general" text="General" icon="sap-icon://settings" selectable="false">
                         <tnt:NavigationListItem key="account" text="Account" />

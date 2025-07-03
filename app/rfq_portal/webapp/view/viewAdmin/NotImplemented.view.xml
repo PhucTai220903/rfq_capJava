@@ -1,7 +1,7 @@
 <mvc:View controllerName="rfqportal.controller.AdminController.NotImplemented"
     xmlns:mvc="sap.ui.core.mvc"
     xmlns="sap.m">
-    
+
     <Page id="notImplementedPage" title="Module Not Implemented" showNavButton="false">
         <Text text="This module is currently under development and will be available in future releases."/>
     </Page>
