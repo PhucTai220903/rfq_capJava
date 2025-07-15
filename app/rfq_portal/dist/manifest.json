@@ -17,7 +17,7 @@
     },
     "dataSources": {
       "mainService": {
-        "uri": "/odata/v4/admin/",
+        "uri": "odata/v4/admin/",
         "type": "OData",
         "settings": {
           "annotations": [],
@@ -171,7 +171,7 @@
           "controlId": "app",
           "parent": "TargetAppAdmin"
         },
-        "TargetRFQ":{
+        "TargetRFQ": {
           "viewName": "viewAdmin.RFQView",
           "viewPath": "rfqportal.view",
           "viewType": "XML",
@@ -204,5 +204,9 @@
       "async": true
     },
     "flexEnabled": false
+  },
+  "sap.cloud": {
+    "public": true,
+    "service": "RFQ.service"
   }
 }

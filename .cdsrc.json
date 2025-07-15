@@ -1,8 +1,14 @@
 {
-    "sql": {
-        "native_hana_associations": false
-    },
-    "requires": {
-        "db": "hana"
+  "sql": {
+    "native_hana_associations": false
+  },
+  "requires": {
+    "db": "hana",
+    "[production]": {
+      "auth": "xsuaa",
+      "db": "hana",
+      "destinations": true,
+      "html5-runtime": true
     }
+  }
 }

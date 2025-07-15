@@ -12,7 +12,8 @@
     "requires": {
       "db": {
         "kind": "sql"
-      }
+      },
+      "workzone": true
     }
   }
 }
