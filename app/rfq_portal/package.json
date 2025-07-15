@@ -9,11 +9,18 @@
   ],
   "main": "webapp/index.html",
   "devDependencies": {
+    "@sap/ux-ui5-tooling": "1",
     "@ui5/cli": "^3.0.0",
-    "@sap/ux-ui5-tooling": "1"
+    "archiver-cli": "^0.1.0",
+    "bestzip": "^2.2.1"
   },
   "scripts": {
-    "deploy-config": "npx -p @sap/ux-ui5-tooling fiori add deploy-config cf"
+    "deploy-config": "npx -p @sap/ux-ui5-tooling fiori add deploy-config cf",
+    "build": "ui5 build --all --clean-dest --dest & npm run copy-xs-app & npm run zip & npm run create-folder & npm run copy",
+    "zip": "cd dist & bestzip ../data.zip *",
+    "create-folder": "cd ../.. & mkdir RFQ-app-deployer\\resources & mkdir resources",
+    "copy": "copy data.zip ..\\..\\RFQ-app-deployer\\resources\\data.zip & copy data.zip ..\\..\\resources\\data.zip",
+    "copy-xs-app": "copy xs-app.json dist\\xs-app.json"
   },
   "author": "",
   "license": "ISC"

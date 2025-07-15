@@ -1,0 +1,43 @@
+{
+  "scopes": [
+    {
+      "name": "$XSAPPNAME.ADMIN",
+      "description": "Admin role with full access to all services"
+    },
+    {
+      "name": "$XSAPPNAME.BUYER",
+      "description": "Buyer role with access to create and manage RFQs"
+    },
+    {
+      "name": "$XSAPPNAME.VENDOR",
+      "description": "Vendor role with access to view RFQs and submit quotations"
+    }
+  ],
+  "attributes": [],
+  "role-templates": [
+    {
+      "name": "ADMIN",
+      "description": "Administrator with full system access",
+      "scope-references": [
+        "$XSAPPNAME.ADMIN"
+      ],
+      "attribute-references": []
+    },
+    {
+      "name": "BUYER",
+      "description": "Buyer who can create and manage RFQs",
+      "scope-references": [
+        "$XSAPPNAME.BUYER"
+      ],
+      "attribute-references": []
+    },
+    {
+      "name": "VENDOR",
+      "description": "Vendor who can view RFQs and submit quotations",
+      "scope-references": [
+        "$XSAPPNAME.VENDOR"
+      ],
+      "attribute-references": []
+    }
+  ]
+}
