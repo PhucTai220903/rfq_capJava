@@ -16,8 +16,24 @@
       "toolsId": "e20cd448-3e23-41f7-a6cd-c7f99403f625"
     },
     "dataSources": {
-      "mainService": {
-        "uri": "odata/v4/",
+      "adminService": {
+        "uri": "/odata/v4/admin/",
+        "type": "OData",
+        "settings": {
+          "annotations": [],
+          "odataVersion": "4.0"
+        }
+      },
+      "buyerService": {
+        "uri": "/odata/v4/buyer/",
+        "type": "OData",
+        "settings": {
+          "annotations": [],
+          "odataVersion": "4.0"
+        }
+      },
+      "vendorService": {
+        "uri": "/odata/v4/vendor/",
         "type": "OData",
         "settings": {
           "annotations": [],
@@ -76,17 +92,6 @@
         "type": "sap.ui.model.resource.ResourceModel",
         "settings": {
           "bundleName": "rfqportal.i18n.i18n"
-        }
-      },
-      "": {
-        "dataSource": "mainService",
-        "type": "sap.ui.model.odata.v4.ODataModel",
-        "preload": true,
-        "settings": {
-          "operationMode": "Server",
-          "autoExpandSelect": true,
-          "earlyRequests": true,
-          "synchronizationMode": "None"
         }
       }
     },
