@@ -17,7 +17,7 @@
     },
     "dataSources": {
       "adminService": {
-        "uri": "/odata/v4/admin/",
+        "uri": "odata/v4/admin/",
         "type": "OData",
         "settings": {
           "annotations": [],
@@ -25,7 +25,7 @@
         }
       },
       "buyerService": {
-        "uri": "/odata/v4/buyer/",
+        "uri": "odata/v4/buyer/",
         "type": "OData",
         "settings": {
           "annotations": [],
@@ -33,7 +33,7 @@
         }
       },
       "vendorService": {
-        "uri": "/odata/v4/vendor/",
+        "uri": "odata/v4/vendor/",
         "type": "OData",
         "settings": {
           "annotations": [],
@@ -115,6 +115,13 @@
       },
       "routes": [
         {
+          "name": "RouteApp",
+          "pattern": "",
+          "target": [
+            "TargetApp"
+          ]
+        },
+        {
           "name": "RouteAppBuyer",
           "pattern": "buyer/appbuyer",
           "target": [
@@ -158,6 +165,13 @@
         }
       ],
       "targets": {
+        "TargetApp": {
+          "viewName": "App",
+          "viewPath": "rfqportal.view",
+          "viewType": "XML",
+          "controlAggregation": "pages",
+          "controlId": "app_page"
+        },
         "TargetAppBuyer": {
           "viewName": "viewBuyer.AppBuyer",
           "viewPath": "rfqportal.view",
@@ -212,7 +226,13 @@
       "id": "app",
       "async": true
     },
-    "flexEnabled": false
+    "flexEnabled": false,
+    "config": {
+      "deployment": {
+        "serviceTimeout": 15000,
+        "retryAttempts": 2
+      }
+    }
   },
   "sap.cloud": {
     "public": true,

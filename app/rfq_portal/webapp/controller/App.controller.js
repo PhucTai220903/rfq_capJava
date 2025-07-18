@@ -15,7 +15,7 @@ sap.ui.define(
         var that = this;
 
         jQuery.ajax({
-          url: "/odata/v4/admin/getUserRoles",
+          url: "odata/v4/admin/getUserRoles",
           method: "GET",
           success: function (data) {
             var aRoles = data.value || [];

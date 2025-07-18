@@ -8,6 +8,26 @@ sap.ui.define(
       {
         onInit: function () {
           console.log("AppBuyer Controller Initialized");
+
+          // Kiểm tra quyền BUYER
+          this.checkBuyerPermission(
+            // Success callback
+            function (aRoles) {
+              console.log("User has BUYER permission:", aRoles);
+              this._setupBuyerInterface();
+            }.bind(this),
+            // Error callback
+            function (aRoles) {
+              console.log("User doesn't have BUYER permission:", aRoles);
+              // Custom error handling if needed
+            }
+          );
+        },
+
+        _setupBuyerInterface: function () {
+          // Initialize buyer-specific functionality here
+          console.log("Setting up buyer interface...");
+          // Add any buyer-specific initialization logic
         },
 
         onSideNavButtonPress: function () {
