@@ -13,10 +13,14 @@ cds:
           name: admin
           password: admin
           roles: ADMIN
-        user:
+        vendor:
           name: vendor
           password: vendor
           roles: VENDOR
+        buyer:
+          name: buyer
+          password: buyer
+          roles: BUYER
 management:
   endpoint:
     health:

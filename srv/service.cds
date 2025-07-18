@@ -1,9 +1,7 @@
 using {RFQ} from '../db/schema';
 
-
-annotate AdminService with @(requires: 'ADMIN');
-
 service AdminService @(path: '/admin') {
+
     annotate RFQItems with @restrict: [{
         grant: ['*'],
         to   : ['ADMIN']
@@ -19,6 +17,8 @@ service AdminService @(path: '/admin') {
             *,
             items as RFQItems
         };
+
+    function getUserRoles() returns array of String;
 
     entity RFQItems       as projection on RFQ.RFQ_Item;
 
