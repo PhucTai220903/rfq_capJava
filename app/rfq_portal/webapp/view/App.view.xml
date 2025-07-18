@@ -1,5 +1,15 @@
 <mvc:View controllerName="rfqportal.controller.App"
     xmlns:mvc="sap.ui.core.mvc"
     xmlns="sap.m" displayBlock="true">
-    <App id="app_page" class="sapUiSizeCompact"/>
+    <App id="app_page" class="sapUiSizeCompact">
+        <pages>
+            <Page showHeader="false">
+                <content>
+                    <VBox justifyContent="Center" alignItems="Center" height="100vh">
+                        <Button text="Go to application" press="onGoToApplication" width="200px"/>
+                    </VBox>
+                </content>
+            </Page>
+        </pages>
+    </App>
 </mvc:View>

@@ -67,6 +67,10 @@
         "sap.uxap": {}
       }
     },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
     "models": {
       "i18n": {
         "type": "sap.ui.model.resource.ResourceModel",
@@ -106,10 +110,10 @@
       },
       "routes": [
         {
-          "name": "RouteGuest",
-          "pattern": "",
+          "name": "RouteAppBuyer",
+          "pattern": "buyer/appbuyer",
           "target": [
-            "TargetGuest"
+            "TargetAppBuyer"
           ]
         },
         {
@@ -149,8 +153,8 @@
         }
       ],
       "targets": {
-        "TargetGuest": {
-          "viewName": "viewGuest.GuestView",
+        "TargetAppBuyer": {
+          "viewName": "viewBuyer.AppBuyer",
           "viewPath": "rfqportal.view",
           "viewType": "XML",
           "controlAggregation": "pages",
@@ -171,7 +175,7 @@
           "controlId": "app",
           "parent": "TargetAppAdmin"
         },
-        "TargetRFQ":{
+        "TargetRFQ": {
           "viewName": "viewAdmin.RFQView",
           "viewPath": "rfqportal.view",
           "viewType": "XML",
