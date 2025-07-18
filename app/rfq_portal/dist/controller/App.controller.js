@@ -1,2 +1,2 @@
-sap.ui.define(["sap/ui/core/mvc/Controller"],r=>{"use strict";return r.extend("rfqportal.controller.App",{onInit(){}})});
+sap.ui.define(["sap/ui/core/mvc/Controller","sap/m/MessageToast"],function(e,n){"use strict";return e.extend("rfqportal.controller.App",{onInit:function(){},onGoToApplication:function(){var e=this.getOwnerComponent().getRouter();jQuery.ajax({url:"/odata/v4/admin/getUserRoles",method:"GET",success:function(o){var t=o.value||[];if(t.includes("ADMIN")){e.navTo("RouteAppAdmin")}else if(t.includes("BUYER")){e.navTo("RouteAppBuyer")}else if(t.includes("VENDOR")){e.navTo("RouteAppVendor")}else{n.show("Bạn không có quyền truy cập.")}},error:function(){n.show("Không thể kiểm tra quyền truy cập.")}})}})});
 //# sourceMappingURL=App.controller.js.map

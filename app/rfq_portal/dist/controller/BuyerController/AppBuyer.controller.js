@@ -1,0 +1,2 @@
+sap.ui.define(["rfqportal/controller/BaseController"],function(e){"use strict";return e.extend("rfqportal.controller.BuyerController.AppBuyer",{onInit:function(){console.log("AppBuyer Controller Initialized")},onSideNavButtonPress:function(){var e=this.byId("sideNavigation_buyer");var r=e.getExpanded();e.setExpanded(!r)}})});
+//# sourceMappingURL=AppBuyer.controller.js.map
