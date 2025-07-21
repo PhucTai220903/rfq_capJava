@@ -58,11 +58,10 @@ sap.ui.define(
           return "None";
         }
 
-        // Return valid ObjectStatus state values
         const stateMap = {
-          A: "Success", // Active
-          I: "Error", // Inactive
-          P: "Warning", // Pending
+          A: "Success",
+          I: "Error",
+          P: "Warning",
         };
 
         return stateMap[sStatus] || "None";
@@ -109,57 +108,51 @@ sap.ui.define(
       },
 
       /**
-       * Check if current user has specific permission
-       * @param {string} sRequiredRole - Required role (ADMIN, BUYER, VENDOR)
-       * @param {function} fnSuccessCallback - Callback when user has permission
+       * Validate user access to specific route based on role
+       * @param {string} sRequiredRole - Required role (admin, buyer, vendor)
+       * @throws {Error} Throws error if user doesn't have access
        */
-      checkUserPermission: function (sRequiredRole, fnSuccessCallback) {
-        var oRouter = this.getOwnerComponent().getRouter();
+      validateRouteAccess: function (sRequiredRole) {
+        var oAppConfigModel = this.getOwnerComponent().getModel("appConfig");
 
-        jQuery.ajax({
-          url: "odata/v4/admin/getUserRoles",
-          method: "GET",
-          success: function (data) {
-            var aRoles = data.value || [];
+        if (!oAppConfigModel) {
+          MessageToast.show("Không thể xác định thông tin người dùng.");
+          throw new Error(
+            "AppConfig model not found - Authentication required"
+          );
+        }
 
-            if (aRoles.includes(sRequiredRole)) {
-              if (fnSuccessCallback) {
-                fnSuccessCallback(aRoles);
-              }
-            } else {
-              MessageToast.show(
-                `Bạn không có quyền truy cập trang ${sRequiredRole}.`
-              );
-              oRouter.navTo("RouteApp");
-            }
-          },
-        });
+        var sCurrentRole = oAppConfigModel.getProperty("/currentRole");
+
+        if (!sCurrentRole) {
+          MessageToast.show(
+            "Phiên làm việc đã hết hạn. Vui lòng đăng nhập lại."
+          );
+          throw new Error("User role not found - Authentication required");
+        }
+
+        if (sCurrentRole !== sRequiredRole) {
+          MessageToast.show(
+            `Bạn không có quyền truy cập trang này. Quyền yêu cầu: ${sRequiredRole.toUpperCase()}`
+          );
+          throw new Error(
+            `Access denied. Required role: ${sRequiredRole}, User role: ${sCurrentRole}`
+          );
+        }
+
+        return true;
       },
 
       /**
-       * Check Admin permission specifically
+       * @returns {string|null}
        */
-      checkAdminPermission: function (fnSuccessCallback, fnErrorCallback) {
-        this.checkUserPermission("ADMIN", fnSuccessCallback, fnErrorCallback);
+      getCurrentUserRole: function () {
+        var oAppConfigModel = this.getOwnerComponent().getModel("appConfig");
+        return oAppConfigModel
+          ? oAppConfigModel.getProperty("/currentRole")
+          : null;
       },
 
-      /**
-       * Check Buyer permission specifically
-       */
-      checkBuyerPermission: function (fnSuccessCallback, fnErrorCallback) {
-        this.checkUserPermission("BUYER", fnSuccessCallback, fnErrorCallback);
-      },
-
-      /**
-       * Check Vendor permission specifically
-       */
-      checkVendorPermission: function (fnSuccessCallback, fnErrorCallback) {
-        this.checkUserPermission("VENDOR", fnSuccessCallback, fnErrorCallback);
-      },
-
-      /**
-       * Redirect user based on their roles
-       */
       _redirectBasedOnRole: function (aRoles, oRouter) {
         if (aRoles.includes("BUYER")) {
           oRouter.navTo("RouteAppBuyer");

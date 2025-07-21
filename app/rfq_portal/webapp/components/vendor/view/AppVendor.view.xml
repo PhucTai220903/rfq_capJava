@@ -1,0 +1,51 @@
+<mvc:View controllerName="rfqportal.controller.VendorController.AppVendor" displayBlock="true"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:tnt="sap.tnt"
+    xmlns:core="sap.ui.core">
+
+    <tnt:ToolPage id="toolPage_vendor">
+
+        <!-- Fixed Custom Header -->
+        <tnt:header>
+            <tnt:ToolHeader>
+                <Button icon="sap-icon://menu2" press="onSideNavButtonPress" />
+                <Image src="images/logo.png" height="50px" />
+                <Title text="Application - Vendor" level="H2" />
+                <ToolbarSpacer />
+                <Button icon="sap-icon://search"/>
+                <Button icon="sap-icon://bell"/>
+                <Avatar initials="VN" displaySize="XS" />
+            </tnt:ToolHeader>
+        </tnt:header>
+
+        <!-- Fixed Side Navigation -->
+        <tnt:sideContent>
+            <tnt:SideNavigation id="sideNavigation_vendor" expanded="false">
+                <tnt:NavigationList>
+                    <tnt:NavigationListItem key="parent-modules" text="Modules" icon="sap-icon://product" selectable="false">
+                        <tnt:NavigationListItem key="dashboard" text="Dashboard" />
+                        <tnt:NavigationListItem key="my-orders" text="My Orders" />
+                        <tnt:NavigationListItem key="rfq" text="RFQs" />
+                        <tnt:NavigationListItem key="quotations" text="Quotations" />
+                        <tnt:NavigationListItem key="contracts" text="Contracts" />
+                        <tnt:NavigationListItem key="inventory" text="Inventory" />
+                        <tnt:NavigationListItem key="reports" text="Reports" />
+                    </tnt:NavigationListItem>
+                    <tnt:NavigationListItem key="parent-general" text="General" icon="sap-icon://settings" selectable="false">
+                        <tnt:NavigationListItem key="profile" text="Profile" />
+                        <tnt:NavigationListItem key="preferences" text="Preferences" />
+                    </tnt:NavigationListItem>
+                </tnt:NavigationList>
+            </tnt:SideNavigation>
+        </tnt:sideContent>
+
+        <!-- Main Content Area -->
+        <tnt:mainContents>
+            <ScrollContainer vertical="true" height="100%">
+                <App id="app_vendor" class="sapUiSizeCompact" />
+            </ScrollContainer>
+        </tnt:mainContents>
+
+    </tnt:ToolPage>
+</mvc:View>

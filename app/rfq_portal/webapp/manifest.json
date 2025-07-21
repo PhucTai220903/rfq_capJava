@@ -16,8 +16,16 @@
       "toolsId": "e20cd448-3e23-41f7-a6cd-c7f99403f625"
     },
     "dataSources": {
+      "referenceService": {
+        "uri": "/odata/v4/reference/",
+        "type": "OData",
+        "settings": {
+          "annotations": [],
+          "odataVersion": "4.0"
+        }
+      },
       "adminService": {
-        "uri": "odata/v4/admin/",
+        "uri": "/odata/v4/admin/",
         "type": "OData",
         "settings": {
           "annotations": [],
@@ -25,7 +33,7 @@
         }
       },
       "buyerService": {
-        "uri": "odata/v4/buyer/",
+        "uri": "/odata/v4/buyer/",
         "type": "OData",
         "settings": {
           "annotations": [],
@@ -33,7 +41,7 @@
         }
       },
       "vendorService": {
-        "uri": "odata/v4/vendor/",
+        "uri": "/odata/v4/vendor/",
         "type": "OData",
         "settings": {
           "annotations": [],
@@ -117,51 +125,22 @@
         {
           "name": "RouteApp",
           "pattern": "",
-          "target": [
-            "TargetApp"
-          ]
+          "target": "TargetApp"
         },
         {
-          "name": "RouteAppBuyer",
-          "pattern": "buyer/appbuyer",
-          "target": [
-            "TargetAppBuyer"
-          ]
+          "name": "RouteAdmin",
+          "pattern": "admin/{*path}",
+          "target": "TargetAdmin"
         },
         {
-          "name": "RouteAppAdmin",
-          "pattern": "admin/appadmin",
-          "target": [
-            "TargetAppAdmin"
-          ]
-        },
-        {
-          "name": "RouteDashboard",
-          "pattern": "admin/dashboard",
-          "target": [
-            "TargetDashboard"
-          ]
-        },
-        {
-          "name": "RouteRFQView",
-          "pattern": "admin/rfq",
-          "target": [
-            "TargetRFQ"
-          ]
+          "name": "RouteBuyer",
+          "pattern": "buyer/{*path}",
+          "target": "TargetBuyer"
         },
         {
           "name": "RouteVendor",
-          "pattern": "admin/vendor",
-          "target": [
-            "TargetVendor"
-          ]
-        },
-        {
-          "name": "RouteContract",
-          "pattern": "admin/contract",
-          "target": [
-            "TargetContract"
-          ]
+          "pattern": "vendor/{*path}",
+          "target": "TargetVendor"
         }
       ],
       "targets": {
@@ -172,52 +151,38 @@
           "controlAggregation": "pages",
           "controlId": "app_page"
         },
-        "TargetAppBuyer": {
-          "viewName": "viewBuyer.AppBuyer",
-          "viewPath": "rfqportal.view",
-          "viewType": "XML",
+        "TargetAdmin": {
+          "type": "Component",
+          "usage": "adminComponent",
           "controlAggregation": "pages",
           "controlId": "app_page"
         },
-        "TargetAppAdmin": {
-          "viewName": "viewAdmin.AppAdmin",
-          "viewPath": "rfqportal.view",
-          "viewType": "XML",
+        "TargetBuyer": {
+          "type": "Component",
+          "usage": "buyerComponent",
           "controlAggregation": "pages",
           "controlId": "app_page"
-        },
-        "TargetDashboard": {
-          "viewName": "viewAdmin.Dashboard",
-          "viewPath": "rfqportal.view",
-          "viewType": "XML",
-          "controlAggregation": "pages",
-          "controlId": "app",
-          "parent": "TargetAppAdmin"
-        },
-        "TargetRFQ": {
-          "viewName": "viewAdmin.RFQView",
-          "viewPath": "rfqportal.view",
-          "viewType": "XML",
-          "controlAggregation": "pages",
-          "controlId": "app",
-          "parent": "TargetAppAdmin"
         },
         "TargetVendor": {
-          "viewName": "viewAdmin.VendorView",
-          "viewPath": "rfqportal.view",
-          "viewType": "XML",
+          "type": "Component",
+          "usage": "vendorComponent",
           "controlAggregation": "pages",
-          "controlId": "app",
-          "parent": "TargetAppAdmin"
-        },
-        "TargetContract": {
-          "viewName": "viewAdmin.ContractView",
-          "viewPath": "rfqportal.view",
-          "viewType": "XML",
-          "controlAggregation": "pages",
-          "controlId": "app",
-          "parent": "TargetAppAdmin"
+          "controlId": "app_page"
         }
+      }
+    },
+    "componentUsages": {
+      "adminComponent": {
+        "name": "rfqportal.manifests.manifest_admin",
+        "lazy": true
+      },
+      "buyerComponent": {
+        "name": "rfqportal.manifests.manifest_buyer",
+        "lazy": true
+      },
+      "vendorComponent": {
+        "name": "rfqportal.manifests.manifest_vendor",
+        "lazy": true
       }
     },
     "rootView": {

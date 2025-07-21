@@ -1,0 +1,153 @@
+{
+    "_version": "1.65.0",
+    "sap.app": {
+        "id": "rfqportal.vendor",
+        "type": "component",
+        "title": "RFQ Portal - Vendor Module",
+        "description": "Vendor module for RFQ Portal",
+        "dataSources": {
+            "vendorService": {
+                "uri": "/odata/v4/vendor/",
+                "type": "OData",
+                "settings": {
+                    "annotations": [],
+                    "odataVersion": "4.0"
+                }
+            },
+            "referenceService": {
+                "uri": "/odata/v4/reference/",
+                "type": "OData",
+                "settings": {
+                    "annotations": [],
+                    "odataVersion": "4.0"
+                }
+            }
+        }
+    },
+    "sap.ui5": {
+        "dependencies": {
+            "minUI5Version": "1.136.2",
+            "libs": {
+                "sap.m": {},
+                "sap.ui.core": {},
+                "sap.tnt": {},
+                "sap.ui.mdc": {},
+                "sap.f": {},
+                "sap.uxap": {}
+            }
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "rfqportal.i18n.i18n"
+                }
+            },
+            "vendorModel": {
+                "dataSource": "vendorService",
+                "type": "sap.ui.model.odata.v4.ODataModel",
+                "settings": {
+                    "synchronizationMode": "None",
+                    "operationMode": "Server",
+                    "autoExpandSelect": true,
+                    "earlyRequests": true
+                }
+            },
+            "referenceModel": {
+                "dataSource": "referenceService",
+                "type": "sap.ui.model.odata.v4.ODataModel",
+                "settings": {
+                    "synchronizationMode": "None",
+                    "operationMode": "Server",
+                    "autoExpandSelect": true,
+                    "earlyRequests": true
+                }
+            }
+        },
+        "routing": {
+            "config": {
+                "routerClass": "sap.m.routing.Router",
+                "controlAggregation": "pages",
+                "controlId": "vendorApp",
+                "transition": "slide",
+                "type": "View",
+                "viewType": "XML",
+                "path": "rfqportal.view.viewVendor",
+                "async": true
+            },
+            "routes": [
+                {
+                    "name": "VendorMain",
+                    "pattern": "",
+                    "target": "VendorApp"
+                },
+                {
+                    "name": "VendorRFQList",
+                    "pattern": "rfq-list",
+                    "target": "RFQList"
+                },
+                {
+                    "name": "VendorQuotationCreate",
+                    "pattern": "quotation-create/{rfqId}",
+                    "target": "QuotationCreate"
+                },
+                {
+                    "name": "VendorQuotationDetail",
+                    "pattern": "quotation-detail/{quotationId}",
+                    "target": "QuotationDetail"
+                },
+                {
+                    "name": "VendorProfile",
+                    "pattern": "profile",
+                    "target": "Profile"
+                }
+            ],
+            "targets": {
+                "VendorApp": {
+                    "viewName": "AppVendor",
+                    "viewPath": "rfqportal.view.viewVendor",
+                    "viewType": "XML",
+                    "controlAggregation": "pages",
+                    "controlId": "vendorApp"
+                },
+                "RFQList": {
+                    "viewName": "RFQList",
+                    "viewPath": "rfqportal.view.viewVendor",
+                    "viewType": "XML",
+                    "controlAggregation": "pages",
+                    "controlId": "vendorContent",
+                    "parent": "VendorApp"
+                },
+                "QuotationCreate": {
+                    "viewName": "QuotationCreate",
+                    "viewPath": "rfqportal.view.viewVendor",
+                    "viewType": "XML",
+                    "controlAggregation": "pages",
+                    "controlId": "vendorContent",
+                    "parent": "VendorApp"
+                },
+                "QuotationDetail": {
+                    "viewName": "QuotationDetail",
+                    "viewPath": "rfqportal.view.viewVendor",
+                    "viewType": "XML",
+                    "controlAggregation": "pages",
+                    "controlId": "vendorContent",
+                    "parent": "VendorApp"
+                },
+                "Profile": {
+                    "viewName": "VendorProfile",
+                    "viewPath": "rfqportal.view.viewVendor",
+                    "viewType": "XML",
+                    "controlAggregation": "pages",
+                    "controlId": "vendorContent",
+                    "parent": "VendorApp"
+                }
+            }
+        },
+        "componentUsages": {
+            "reusableComponent": {
+                "name": "rfqportal.component.reusable"
+            }
+        }
+    }
+}

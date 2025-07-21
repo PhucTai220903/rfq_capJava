@@ -8,22 +8,8 @@ import com.sap.cds.services.handler.annotations.On;
 import com.sap.cds.services.handler.annotations.ServiceName;
 import com.sap.cds.services.request.UserInfo;
 
-import cds.gen.adminservice.GetUserRolesContext;
-
 import java.util.ArrayList;
 import java.util.List;
 
-@Component
-@ServiceName("AdminService")
 public class AdminService implements EventHandler {
-
-    @Autowired
-    UserInfo userInfo;
-
-    @On(event = "getUserRoles")
-    public void onGetUserRoles(GetUserRolesContext context) {
-        System.out.println("Getting user roles...");
-        List<String> roles = new ArrayList<>(userInfo.getRoles());
-        context.setResult(roles);
-    }
 }

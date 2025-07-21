@@ -117,7 +117,7 @@ sap.ui.define(
         var oRouter = this.getOwnerComponent().getRouter();
 
         jQuery.ajax({
-          url: "odata/v4/admin/getUserRoles",
+          url: "/odata/v4/admin/getUserRoles",
           method: "GET",
           success: function (data) {
             var aRoles = data.value || [];

@@ -17,7 +17,6 @@ service AdminService @(path: '/admin') {
             items as RFQItems
         };
 
-    function getUserRoles() returns array of String;
 
     entity RFQItems       as projection on RFQ.RFQ_Item;
     entity Buyers         as projection on RFQ.BUYER;

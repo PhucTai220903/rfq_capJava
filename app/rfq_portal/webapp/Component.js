@@ -19,20 +19,35 @@ sap.ui.define(
 
         this.setModel(models.createDeviceModel(), "device");
 
-        // Initialize model based on role
         this._initializeModelBasedOnRole();
 
         this.getRouter().initialize();
+
+        sap.ui.component.load({
+          name: "rfqportal.admin",
+          manifest: "json",
+          async: true,
+        });
+
+        sap.ui.component.load({
+          name: "rfqportal.buyer",
+          manifest: "json",
+          async: true,
+        });
+
+        sap.ui.component.load({
+          name: "rfqportal.vendor",
+          manifest: "json",
+          async: true,
+        });
       },
 
       _initializeModelBasedOnRole: function () {
         var that = this;
 
-        // Get user roles first
         jQuery.ajax({
-          url: "/odata/v4/admin/getUserRoles",
+          url: "/odata/v4/reference/getUserRoles",
           method: "GET",
-          timeout: 10000,
           success: function (data) {
             var aRoles = data.value || [];
             var sRole = null;
@@ -53,8 +68,6 @@ sap.ui.define(
           },
           error: function (xhr) {
             console.error("Failed to get user roles:", xhr);
-            // Fallback to admin service for demo
-            that._createAndSetModel("admin");
           },
         });
       },
@@ -72,10 +85,8 @@ sap.ui.define(
             earlyRequests: true,
           });
 
-          // Set as default model
           this.setModel(oModel);
 
-          // Store current role
           this.setModel(
             new JSONModel({
               currentRole: sRole,
@@ -84,8 +95,6 @@ sap.ui.define(
             }),
             "appConfig"
           );
-
-          console.log("Model created successfully for role:", sRole);
         } else {
           console.error("DataSource not found for role:", sRole);
         }
