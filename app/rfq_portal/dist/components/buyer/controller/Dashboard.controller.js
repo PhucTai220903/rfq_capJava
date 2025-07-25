@@ -1,0 +1,2 @@
+sap.ui.define(["sap/ui/core/mvc/Controller","sap/m/MessageToast"],function(e,r){"use strict";return e.extend("rfqportal.components.buyer.controller.Dashboard",{})});
+//# sourceMappingURL=Dashboard.controller.js.map

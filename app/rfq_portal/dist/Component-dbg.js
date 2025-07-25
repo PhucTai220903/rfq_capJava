@@ -19,7 +19,6 @@ sap.ui.define(
 
         this.setModel(models.createDeviceModel(), "device");
 
-        // Initialize model based on role
         this._initializeModelBasedOnRole();
 
         this.getRouter().initialize();
@@ -28,11 +27,9 @@ sap.ui.define(
       _initializeModelBasedOnRole: function () {
         var that = this;
 
-        // Get user roles first
         jQuery.ajax({
-          url: "/odata/v4/admin/getUserRoles",
+          url: "odata/v4/reference/getUserRoles",
           method: "GET",
-          timeout: 10000,
           success: function (data) {
             var aRoles = data.value || [];
             var sRole = null;
@@ -47,14 +44,13 @@ sap.ui.define(
 
             if (sRole) {
               that._createAndSetModel(sRole);
+              that._validateRouteAccess(sRole);
             } else {
               console.warn("No valid role found for user");
             }
           },
           error: function (xhr) {
             console.error("Failed to get user roles:", xhr);
-            // Fallback to admin service for demo
-            that._createAndSetModel("admin");
           },
         });
       },
@@ -72,10 +68,8 @@ sap.ui.define(
             earlyRequests: true,
           });
 
-          // Set as default model
           this.setModel(oModel);
 
-          // Store current role
           this.setModel(
             new JSONModel({
               currentRole: sRole,
@@ -85,9 +79,80 @@ sap.ui.define(
             "appConfig"
           );
 
-          console.log("Model created successfully for role:", sRole);
+          // ✅ Lưu reference để propagate cho child components
+          this._currentRole = sRole;
+          this._oDataModel = oModel;
         } else {
           console.error("DataSource not found for role:", sRole);
+
+          this.setModel(
+            new JSONModel({
+              currentRole: sRole,
+              serviceUrl: "/odata/v4/" + sRole + "/",
+              timestamp: new Date().toISOString(),
+            }),
+            "appConfig"
+          );
+        }
+      },
+
+      // ✅ Override createComponent để auto-propagate models
+      createComponent: function (vUsage, sId, mSettings) {
+        var oComponentPromise = UIComponent.prototype.createComponent.apply(
+          this,
+          arguments
+        );
+
+        var that = this;
+        return oComponentPromise.then(function (oComponent) {
+          // Auto-propagate models to child component
+          that._propagateModelsToChild(oComponent);
+          return oComponent;
+        });
+      },
+
+      _propagateModelsToChild: function (oChildComponent) {
+        if (!oChildComponent) {
+          return;
+        }
+
+        console.log(
+          "Auto-propagating models to child component:",
+          oChildComponent.getId()
+        );
+
+        // Propagate default OData model
+        var oMainModel = this.getModel();
+        if (oMainModel && !oChildComponent.getModel()) {
+          oChildComponent.setModel(oMainModel);
+          console.log("Propagated default model to child");
+        }
+
+        // Propagate appConfig model
+        var oAppConfigModel = this.getModel("appConfig");
+        if (oAppConfigModel && !oChildComponent.getModel("appConfig")) {
+          oChildComponent.setModel(oAppConfigModel, "appConfig");
+          console.log("Propagated appConfig model to child");
+        }
+
+        // Propagate device model
+        var oDeviceModel = this.getModel("device");
+        if (oDeviceModel && !oChildComponent.getModel("device")) {
+          oChildComponent.setModel(oDeviceModel, "device");
+          console.log("Propagated device model to child");
+        }
+
+        // Propagate i18n model
+        var oI18nModel = this.getModel("i18n");
+        if (oI18nModel && !oChildComponent.getModel("i18n")) {
+          oChildComponent.setModel(oI18nModel, "i18n");
+          console.log("Propagated i18n model to child");
+        }
+      },
+
+      _validateRouteAccess: function (sRole) {
+        if (!sRole) {
+          console.error("No valid role found");
         }
       },
     });

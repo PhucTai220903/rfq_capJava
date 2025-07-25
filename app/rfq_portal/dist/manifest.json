@@ -16,6 +16,14 @@
       "toolsId": "e20cd448-3e23-41f7-a6cd-c7f99403f625"
     },
     "dataSources": {
+      "referenceService": {
+        "uri": "/odata/v4/reference/",
+        "type": "OData",
+        "settings": {
+          "annotations": [],
+          "odataVersion": "4.0"
+        }
+      },
       "adminService": {
         "uri": "/odata/v4/admin/",
         "type": "OData",
@@ -33,7 +41,7 @@
         }
       },
       "vendorService": {
-        "uri": "/odata/v4/vendor/",
+        "uri": "odata/v4/vendor/",
         "type": "OData",
         "settings": {
           "annotations": [],
@@ -46,7 +54,6 @@
         "rfq_portal-display": {
           "semanticObject": "rfq_portal",
           "action": "display",
-          "title": "{{rfq_portal-display.flpTitle}}",
           "signature": {
             "parameters": {},
             "additionalParameters": "allowed"
@@ -55,37 +62,14 @@
       }
     }
   },
-  "sap.ui": {
-    "technology": "UI5",
-    "icons": {
-      "icon": "",
-      "favIcon": "",
-      "phone": "",
-      "phone@2": "",
-      "tablet": "",
-      "tablet@2": ""
-    },
-    "deviceTypes": {
-      "desktop": true,
-      "tablet": true,
-      "phone": true
-    }
-  },
   "sap.ui5": {
     "dependencies": {
       "minUI5Version": "1.136.2",
       "libs": {
         "sap.m": {},
         "sap.ui.core": {},
-        "sap.tnt": {},
-        "sap.ui.mdc": {},
-        "sap.f": {},
-        "sap.uxap": {}
+        "sap.tnt": {}
       }
-    },
-    "contentDensities": {
-      "compact": true,
-      "cozy": true
     },
     "models": {
       "i18n": {
@@ -93,14 +77,10 @@
         "settings": {
           "bundleName": "rfqportal.i18n.i18n"
         }
+      },
+      "device": {
+        "type": "sap.ui.model.json.JSONModel"
       }
-    },
-    "resources": {
-      "css": [
-        {
-          "uri": "css/style.css"
-        }
-      ]
     },
     "routing": {
       "config": {
@@ -117,51 +97,22 @@
         {
           "name": "RouteApp",
           "pattern": "",
-          "target": [
-            "TargetApp"
-          ]
-        },
-        {
-          "name": "RouteAppBuyer",
-          "pattern": "buyer/appbuyer",
-          "target": [
-            "TargetAppBuyer"
-          ]
+          "target": "TargetApp"
         },
         {
           "name": "RouteAppAdmin",
-          "pattern": "admin/appadmin",
-          "target": [
-            "TargetAppAdmin"
-          ]
+          "pattern": "admin",
+          "target": "TargetAdmin"
         },
         {
-          "name": "RouteDashboard",
-          "pattern": "admin/dashboard",
-          "target": [
-            "TargetDashboard"
-          ]
+          "name": "RouteAppBuyer",
+          "pattern": "buyer",
+          "target": "TargetBuyer"
         },
         {
-          "name": "RouteRFQView",
-          "pattern": "admin/rfq",
-          "target": [
-            "TargetRFQ"
-          ]
-        },
-        {
-          "name": "RouteVendor",
-          "pattern": "admin/vendor",
-          "target": [
-            "TargetVendor"
-          ]
-        },
-        {
-          "name": "RouteContract",
-          "pattern": "admin/contract",
-          "target": [
-            "TargetContract"
-          ]
+          "name": "RouteAppVendor",
+          "pattern": "vendor",
+          "target": "TargetVendor"
         }
       ],
       "targets": {
@@ -172,66 +123,45 @@
           "controlAggregation": "pages",
           "controlId": "app_page"
         },
-        "TargetAppBuyer": {
-          "viewName": "viewBuyer.AppBuyer",
-          "viewPath": "rfqportal.view",
-          "viewType": "XML",
+        "TargetAdmin": {
+          "type": "Component",
+          "usage": "adminComponent",
           "controlAggregation": "pages",
           "controlId": "app_page"
         },
-        "TargetAppAdmin": {
-          "viewName": "viewAdmin.AppAdmin",
-          "viewPath": "rfqportal.view",
-          "viewType": "XML",
+        "TargetBuyer": {
+          "type": "Component",
+          "usage": "buyerComponent",
           "controlAggregation": "pages",
           "controlId": "app_page"
-        },
-        "TargetDashboard": {
-          "viewName": "viewAdmin.Dashboard",
-          "viewPath": "rfqportal.view",
-          "viewType": "XML",
-          "controlAggregation": "pages",
-          "controlId": "app",
-          "parent": "TargetAppAdmin"
-        },
-        "TargetRFQ": {
-          "viewName": "viewAdmin.RFQView",
-          "viewPath": "rfqportal.view",
-          "viewType": "XML",
-          "controlAggregation": "pages",
-          "controlId": "app",
-          "parent": "TargetAppAdmin"
         },
         "TargetVendor": {
-          "viewName": "viewAdmin.VendorView",
-          "viewPath": "rfqportal.view",
-          "viewType": "XML",
+          "type": "Component",
+          "usage": "vendorComponent",
           "controlAggregation": "pages",
-          "controlId": "app",
-          "parent": "TargetAppAdmin"
-        },
-        "TargetContract": {
-          "viewName": "viewAdmin.ContractView",
-          "viewPath": "rfqportal.view",
-          "viewType": "XML",
-          "controlAggregation": "pages",
-          "controlId": "app",
-          "parent": "TargetAppAdmin"
+          "controlId": "app_page"
         }
+      }
+    },
+    "componentUsages": {
+      "adminComponent": {
+        "name": "rfqportal.components.admin",
+        "lazy": true
+      },
+      "buyerComponent": {
+        "name": "rfqportal.components.buyer",
+        "lazy": true
+      },
+      "vendorComponent": {
+        "name": "rfqportal.components.vendor",
+        "lazy": true
       }
     },
     "rootView": {
       "viewName": "rfqportal.view.App",
       "type": "XML",
-      "id": "app",
-      "async": true
-    },
-    "flexEnabled": false,
-    "config": {
-      "deployment": {
-        "serviceTimeout": 15000,
-        "retryAttempts": 2
-      }
+      "async": true,
+      "id": "App"
     }
   },
   "sap.cloud": {

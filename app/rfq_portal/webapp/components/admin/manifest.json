@@ -1,28 +1,14 @@
 {
     "_version": "1.65.0",
     "sap.app": {
-        "id": "rfqportal.admin",
-        "type": "component",
-        "title": "RFQ Portal - Admin Module",
-        "description": "Admin module for RFQ Portal",
-        "dataSources": {
-            "adminService": {
-                "uri": "/odata/v4/admin/",
-                "type": "OData",
-                "settings": {
-                    "annotations": [],
-                    "odataVersion": "4.0"
-                }
-            },
-            "referenceService": {
-                "uri": "/odata/v4/reference/",
-                "type": "OData",
-                "settings": {
-                    "annotations": [],
-                    "odataVersion": "4.0"
-                }
-            }
-        }
+        "id": "rfqportal.components.admin",
+        "type": "application",
+        "supportedLocales": [
+            "en",
+            "vi",
+            "kr"
+        ],
+        "fallbackLocale": "en"
     },
     "sap.ui5": {
         "dependencies": {
@@ -31,49 +17,26 @@
                 "sap.m": {},
                 "sap.ui.core": {},
                 "sap.tnt": {},
-                "sap.ui.mdc": {},
                 "sap.f": {},
-                "sap.uxap": {}
+                "sap.uxap": {},
+                "sap.ui.table": {},
+                "sap.ui.mdc": {}
             }
         },
         "models": {
             "i18n": {
                 "type": "sap.ui.model.resource.ResourceModel",
                 "settings": {
-                    "bundleName": "rfqportal.i18n.i18n"
-                }
-            },
-            "adminModel": {
-                "dataSource": "adminService",
-                "type": "sap.ui.model.odata.v4.ODataModel",
-                "settings": {
-                    "synchronizationMode": "None",
-                    "operationMode": "Server",
-                    "autoExpandSelect": true,
-                    "earlyRequests": true
-                }
-            },
-            "referenceModel": {
-                "dataSource": "referenceService",
-                "type": "sap.ui.model.odata.v4.ODataModel",
-                "settings": {
-                    "synchronizationMode": "None",
-                    "operationMode": "Server",
-                    "autoExpandSelect": true,
-                    "earlyRequests": true
+                    "bundleName": "rfqportal.components.admin.i18n.i18n"
                 }
             }
         },
         "routing": {
             "config": {
                 "routerClass": "sap.m.routing.Router",
-                "controlAggregation": "pages",
-                "controlId": "adminApp",
-                "transition": "slide",
-                "type": "View",
                 "viewType": "XML",
-                "path": "rfqportal.view.viewAdmin",
-                "async": true
+                "async": true,
+                "path": "rfqportal.components.admin.view"
             },
             "routes": [
                 {
@@ -82,72 +45,58 @@
                     "target": "AdminApp"
                 },
                 {
-                    "name": "AdminDashboard",
-                    "pattern": "dashboard",
+                    "name": "Dashboard",
+                    "pattern": "admin/dashboard",
                     "target": "Dashboard"
                 },
                 {
-                    "name": "AdminRFQ",
-                    "pattern": "rfq",
-                    "target": "RFQ"
+                    "name": "RFQView",
+                    "pattern": "admin/rfq",
+                    "target": "RFQView"
                 },
                 {
-                    "name": "AdminVendor",
-                    "pattern": "vendor",
-                    "target": "Vendor"
+                    "name": "VendorView",
+                    "pattern": "admin/vendor",
+                    "target": "VendorView"
                 },
                 {
-                    "name": "AdminContract",
-                    "pattern": "contract",
-                    "target": "Contract"
+                    "name": "ContractView",
+                    "pattern": "admin/contract",
+                    "target": "ContractView"
                 }
             ],
             "targets": {
                 "AdminApp": {
                     "viewName": "AppAdmin",
-                    "viewPath": "rfqportal.view.viewAdmin",
-                    "viewType": "XML",
                     "controlAggregation": "pages",
-                    "controlId": "adminApp"
+                    "controlId": "app_admin"
                 },
                 "Dashboard": {
                     "viewName": "Dashboard",
-                    "viewPath": "rfqportal.view.viewAdmin",
-                    "viewType": "XML",
                     "controlAggregation": "pages",
-                    "controlId": "adminContent",
-                    "parent": "AdminApp"
+                    "controlId": "app_admin"
                 },
-                "RFQ": {
+                "RFQView": {
                     "viewName": "RFQView",
-                    "viewPath": "rfqportal.view.viewAdmin",
-                    "viewType": "XML",
                     "controlAggregation": "pages",
-                    "controlId": "adminContent",
-                    "parent": "AdminApp"
+                    "controlId": "app_admin"
                 },
-                "Vendor": {
+                "VendorView": {
                     "viewName": "VendorView",
-                    "viewPath": "rfqportal.view.viewAdmin",
-                    "viewType": "XML",
                     "controlAggregation": "pages",
-                    "controlId": "adminContent",
-                    "parent": "AdminApp"
+                    "controlId": "app_admin"
                 },
-                "Contract": {
+                "ContractView": {
                     "viewName": "ContractView",
-                    "viewPath": "rfqportal.view.viewAdmin",
-                    "viewType": "XML",
                     "controlAggregation": "pages",
-                    "controlId": "adminContent",
-                    "parent": "AdminApp"
+                    "controlId": "app_admin"
                 }
             }
         },
-        "componentUsages": {
-            "reusableComponent": {
-                "name": "rfqportal.component.reusable"
-            }
+        "rootView": {
+            "viewName": "rfqportal.components.admin.view.AppAdmin",
+            "type": "XML",
+            "async": true
         }
     }
 }

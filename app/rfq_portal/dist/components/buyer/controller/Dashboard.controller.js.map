@@ -1,0 +1,1 @@
+{"version":3,"file":"Dashboard.controller.js","names":["sap","ui","define","Controller","MessageToast","extend"],"sources":["Dashboard-dbg.controller.js"],"mappings":"AAAAA,IAAIC,GAAGC,OACL,CAAC,6BAA8B,sBAC/B,SAAUC,EAAYC,GACpB,aAEA,OAAOD,EAAWE,OAChB,kDACA,CAAC,EAEL","ignoreList":[]}

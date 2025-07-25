@@ -1,0 +1,96 @@
+{
+    "_version": "1.65.0",
+    "sap.app": {
+        "id": "rfqportal.components.admin",
+        "type": "application"
+    },
+    "sap.ui5": {
+        "dependencies": {
+            "minUI5Version": "1.136.2",
+            "libs": {
+                "sap.m": {},
+                "sap.ui.core": {},
+                "sap.tnt": {},
+                "sap.f": {},
+                "sap.uxap": {},
+                "sap.ui.table": {},
+                "sap.ui.mdc": {}
+            }
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "rfqportal.components.admin.i18n.i18n"
+                }
+            }
+        },
+        "routing": {
+            "config": {
+                "routerClass": "sap.m.routing.Router",
+                "viewType": "XML",
+                "async": true,
+                "path": "rfqportal.components.admin.view"
+            },
+            "routes": [
+                {
+                    "name": "AdminMain",
+                    "pattern": "",
+                    "target": "AdminApp"
+                },
+                {
+                    "name": "Dashboard",
+                    "pattern": "admin/dashboard",
+                    "target": "Dashboard"
+                },
+                {
+                    "name": "RFQView",
+                    "pattern": "admin/rfq",
+                    "target": "RFQView"
+                },
+                {
+                    "name": "VendorView",
+                    "pattern": "admin/vendor",
+                    "target": "VendorView"
+                },
+                {
+                    "name": "ContractView",
+                    "pattern": "admin/contract",
+                    "target": "ContractView"
+                }
+            ],
+            "targets": {
+                "AdminApp": {
+                    "viewName": "AppAdmin",
+                    "controlAggregation": "pages",
+                    "controlId": "app_admin"
+                },
+                "Dashboard": {
+                    "viewName": "Dashboard",
+                    "controlAggregation": "pages",
+                    "controlId": "app_admin"
+                },
+                "RFQView": {
+                    "viewName": "RFQView",
+                    "controlAggregation": "pages",
+                    "controlId": "app_admin"
+                },
+                "VendorView": {
+                    "viewName": "VendorView",
+                    "controlAggregation": "pages",
+                    "controlId": "app_admin"
+                },
+                "ContractView": {
+                    "viewName": "ContractView",
+                    "controlAggregation": "pages",
+                    "controlId": "app_admin"
+                }
+            }
+        },
+        "rootView": {
+            "viewName": "rfqportal.components.admin.view.AppAdmin",
+            "type": "XML",
+            "async": true
+        }
+    }
+}

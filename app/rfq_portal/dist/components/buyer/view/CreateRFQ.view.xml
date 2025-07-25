@@ -1,0 +1,41 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:u="sap.ui.unified"
+    xmlns:f="sap.ui.layout.form" controllerName="rfqportal.components.buyer.controller.CreateRFQ">
+
+    <Page title="{i18n>createRFQPageTitle}" showNavButton="true" navButtonPress="onNavBack">
+        <content>
+            <VBox class="sapUiSmallMargin">
+                <f:SimpleForm editable="true" layout="ResponsiveGridLayout">
+                    <f:content>
+                        <Label text="{i18n>rfqTitleLabel}"/>
+                        <Input id="titleInput" value="{/Title}" placeholder="{i18n>rfqTitlePlaceholder}"/>
+
+                        <Label text="{i18n>rfqDescriptionLabel}"/>
+                        <TextArea id="descriptionInput" value="{/Description}" placeholder="{i18n>rfqDescriptionPlaceholder}" rows="3"/>
+
+                        <Label text="{i18n>rfqDueDateLabel}"/>
+                        <DatePicker id="dueDateInput" value="{/DueDate}" placeholder="{i18n>rfqDueDatePlaceholder}" valueFormat="yyyy-MM-dd" displayFormat="long"/>
+
+                        <Label text="{i18n>rfqBusinessDomainLabel}"/>
+                        <Select id="businessDomainSelect" selectedKey="{/BusinessDomain}">
+                            <items>
+                                <core:Item key="F" text="{i18n>businessDomainFood}"/>
+                                <core:Item key="H" text="{i18n>businessDomainHK}"/>
+                                <core:Item key="E" text="{i18n>businessDomainET}"/>
+                                <core:Item key="O" text="{i18n>businessDomainONS}"/>
+                            </items>
+                        </Select>
+
+                        <Label text="{i18n>rfqAttachmentLabel}"/>
+                        <u:FileUploader id="attachmentUploader" uploadUrl="/upload" placeholder="{i18n>rfqAttachmentPlaceholder}" change="onFileChange"/>
+                    </f:content>
+                </f:SimpleForm>
+
+                <!-- Submit Button -->
+                <Button text="{i18n>submitButtonText}" type="Emphasized" press="onSubmitRFQ"/>
+            </VBox>
+        </content>
+    </Page>
+</mvc:View>

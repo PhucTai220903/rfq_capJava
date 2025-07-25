@@ -1,0 +1,2 @@
+sap.ui.define(["sap/ui/core/mvc/Controller","sap/m/MessageToast","sap/ui/model/json/JSONModel"],function(e,t,n){"use strict";return e.extend("rfqportal.components.buyer.controller.CreateRFQ",{onInit:function(){var e=new n({Title:"",Description:"",DueDate:"",BusinessDomain:""});this.getView().setModel(e)},onNavBack:function(){this.getOwnerComponent().getRouter().navTo("BuyerMain")},onSubmitRFQ:function(){var e=this.getView().getModel();var n=e.getData();t.show("RFQ submitted successfully!")}})});
+//# sourceMappingURL=CreateRFQ.controller.js.map

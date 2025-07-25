@@ -1,0 +1,2 @@
+sap.ui.define(["sap/ui/core/UIComponent","sap/ui/model/json/JSONModel"],(e,i)=>{"use strict";return e.extend("rfqportal.components.admin.Component",{metadata:{manifest:"json"},init:function(){e.prototype.init.apply(this,arguments);console.log("Admin component initialized with models:",{defaultModel:!!this.getModel(),appConfig:!!this.getModel("appConfig"),device:!!this.getModel("device"),i18n:!!this.getModel("i18n")});this.getRouter().initialize()}})});
+//# sourceMappingURL=Component.js.map

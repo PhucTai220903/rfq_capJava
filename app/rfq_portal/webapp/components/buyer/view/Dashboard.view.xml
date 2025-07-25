@@ -1,0 +1,15 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m" controllerName="rfqportal.components.buyer.controller.Dashboard">
+
+    <Page title="Dashboard" showNavButton="true" navButtonPress="onNavBack">
+        <content>
+            <VBox class="sapUiSmallMargin">
+                <Title text="Welcome to Buyer Dashboard" level="H1"/>
+                <Text text="Here you can manage RFQs, Quotations, and Purchase Orders."/>
+                <Button text="Create RFQ" type="Emphasized" press="onCreateRFQ"/>
+                <Button text="View RFQs" press="onViewRFQs"/>
+                <Button text="View Quotations" press="onViewQuotations"/>
+            </VBox>
+        </content>
+    </Page>
+</mvc:View>

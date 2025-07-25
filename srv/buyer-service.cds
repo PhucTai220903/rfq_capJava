@@ -1,6 +1,6 @@
 using {RFQ} from '../db/schema';
 
-service BuyerService @(path: '/buyer') {
+service BuyerService @(path: '/buyer')@(requires: 'BUYER') {
     annotate RFQs with @restrict: [{
         grant: ['*'],
         to   : ['BUYER']

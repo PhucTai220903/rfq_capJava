@@ -10,13 +10,14 @@
   "main": "webapp/index.html",
   "devDependencies": {
     "@sap/ux-ui5-tooling": "^1.18.1",
+    "@stagewise/toolbar": "^0.6.2",
     "@ui5/cli": "^3.11.9",
     "bestzip": "^2.2.1"
   },
   "scripts": {
+    "build": "npm run install-deps && ui5 build --all --clean-dest --dest && npm run copy-xs-app && npm run zip && npm run create-folder && npm run copy",
     "deploy-config": "npx -p @sap/ux-ui5-tooling fiori add deploy-config cf",
     "install-deps": "npm install --save-dev bestzip",
-    "build": "npm run install-deps && ui5 build --all --clean-dest --dest && npm run copy-xs-app && npm run zip && npm run create-folder && npm run copy",
     "zip": "cd dist && bestzip ../data.zip *",
     "create-folder": "cd ../.. && if not exist resources mkdir resources",
     "copy": "copy /Y data.zip ..\\..\\resources\\data.zip",

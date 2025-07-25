@@ -17,7 +17,6 @@ sap.ui.define(
 
         var sRole = oAppConfigModel.getProperty("/currentRole");
 
-        // Điều hướng dựa trên vai trò đã được kiểm tra ở Component.js
         switch (sRole) {
           case "admin":
             oRouter.navTo("RouteAppAdmin");
@@ -30,7 +29,7 @@ sap.ui.define(
             break;
           default:
             MessageToast.show("Bạn không có quyền truy cập.");
-            oRouter.navTo("RouteApp"); // Redirect về trang chính
+            oRouter.navTo("RouteApp"); 
             break;
         }
       },

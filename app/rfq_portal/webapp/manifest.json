@@ -41,7 +41,7 @@
         }
       },
       "vendorService": {
-        "uri": "/odata/v4/vendor/",
+        "uri": "odata/v4/vendor/",
         "type": "OData",
         "settings": {
           "annotations": [],
@@ -54,7 +54,6 @@
         "rfq_portal-display": {
           "semanticObject": "rfq_portal",
           "action": "display",
-          "title": "{{rfq_portal-display.flpTitle}}",
           "signature": {
             "parameters": {},
             "additionalParameters": "allowed"
@@ -63,37 +62,14 @@
       }
     }
   },
-  "sap.ui": {
-    "technology": "UI5",
-    "icons": {
-      "icon": "",
-      "favIcon": "",
-      "phone": "",
-      "phone@2": "",
-      "tablet": "",
-      "tablet@2": ""
-    },
-    "deviceTypes": {
-      "desktop": true,
-      "tablet": true,
-      "phone": true
-    }
-  },
   "sap.ui5": {
     "dependencies": {
       "minUI5Version": "1.136.2",
       "libs": {
         "sap.m": {},
         "sap.ui.core": {},
-        "sap.tnt": {},
-        "sap.ui.mdc": {},
-        "sap.f": {},
-        "sap.uxap": {}
+        "sap.tnt": {}
       }
-    },
-    "contentDensities": {
-      "compact": true,
-      "cozy": true
     },
     "models": {
       "i18n": {
@@ -101,14 +77,10 @@
         "settings": {
           "bundleName": "rfqportal.i18n.i18n"
         }
+      },
+      "device": {
+        "type": "sap.ui.model.json.JSONModel"
       }
-    },
-    "resources": {
-      "css": [
-        {
-          "uri": "css/style.css"
-        }
-      ]
     },
     "routing": {
       "config": {
@@ -128,18 +100,18 @@
           "target": "TargetApp"
         },
         {
-          "name": "RouteAdmin",
-          "pattern": "admin/{*path}",
+          "name": "RouteAppAdmin",
+          "pattern": "admin",
           "target": "TargetAdmin"
         },
         {
-          "name": "RouteBuyer",
-          "pattern": "buyer/{*path}",
+          "name": "RouteAppBuyer",
+          "pattern": "buyer",
           "target": "TargetBuyer"
         },
         {
-          "name": "RouteVendor",
-          "pattern": "vendor/{*path}",
+          "name": "RouteAppVendor",
+          "pattern": "vendor",
           "target": "TargetVendor"
         }
       ],
@@ -173,30 +145,23 @@
     },
     "componentUsages": {
       "adminComponent": {
-        "name": "rfqportal.manifests.manifest_admin",
+        "name": "rfqportal.components.admin",
         "lazy": true
       },
       "buyerComponent": {
-        "name": "rfqportal.manifests.manifest_buyer",
+        "name": "rfqportal.components.buyer",
         "lazy": true
       },
       "vendorComponent": {
-        "name": "rfqportal.manifests.manifest_vendor",
+        "name": "rfqportal.components.vendor",
         "lazy": true
       }
     },
     "rootView": {
       "viewName": "rfqportal.view.App",
       "type": "XML",
-      "id": "app",
-      "async": true
-    },
-    "flexEnabled": false,
-    "config": {
-      "deployment": {
-        "serviceTimeout": 15000,
-        "retryAttempts": 2
-      }
+      "async": true,
+      "id": "App"
     }
   },
   "sap.cloud": {
